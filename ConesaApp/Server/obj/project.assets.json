@@ -3028,19 +3028,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\palos\\.nuget\\packages\\": {}
+    "C:\\Users\\USUARIO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Server\\ConesaApp.Server.csproj",
+      "projectUniqueName": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Server\\ConesaApp.Server.csproj",
       "projectName": "ConesaApp.Server",
-      "projectPath": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Server\\ConesaApp.Server.csproj",
-      "packagesPath": "C:\\Users\\palos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Server\\obj\\",
+      "projectPath": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Server\\ConesaApp.Server.csproj",
+      "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Server\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\palos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -3054,14 +3054,14 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "projectReferences": {
-            "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp.Database\\ConesaApp.Database.csproj": {
-              "projectPath": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp.Database\\ConesaApp.Database.csproj"
+            "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp.Database\\ConesaApp.Database.csproj": {
+              "projectPath": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp.Database\\ConesaApp.Database.csproj"
             },
-            "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Client\\ConesaApp.Client.csproj": {
-              "projectPath": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Client\\ConesaApp.Client.csproj"
+            "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Client\\ConesaApp.Client.csproj": {
+              "projectPath": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Client\\ConesaApp.Client.csproj"
             },
-            "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Shared\\ConesaApp.Shared.csproj": {
-              "projectPath": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Shared\\ConesaApp.Shared.csproj"
+            "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Shared\\ConesaApp.Shared.csproj": {
+              "projectPath": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Shared\\ConesaApp.Shared.csproj"
             }
           }
         }

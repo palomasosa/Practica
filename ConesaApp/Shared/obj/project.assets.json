@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\palos\\.nuget\\packages\\": {}
+    "C:\\Users\\USUARIO\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Shared\\ConesaApp.Shared.csproj",
+      "projectUniqueName": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Shared\\ConesaApp.Shared.csproj",
       "projectName": "ConesaApp.Shared",
-      "projectPath": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Shared\\ConesaApp.Shared.csproj",
-      "packagesPath": "C:\\Users\\palos\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\palos\\source\\repos\\ConesaApp\\ConesaApp\\Shared\\obj\\",
+      "projectPath": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Shared\\ConesaApp.Shared.csproj",
+      "packagesPath": "C:\\Users\\USUARIO\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\USUARIO\\Source\\Repos\\Practica\\ConesaApp\\Shared\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\palos\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USUARIO\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
