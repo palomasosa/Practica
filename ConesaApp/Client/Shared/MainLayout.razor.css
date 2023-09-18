@@ -8,11 +8,35 @@ main {
     flex: 1;
 }
 
-.sidebar {
-    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+.mainConainer {
+    width: 100%;
+    height: 93vh;
 }
+.topMenu{
+    height: 8%;
+}
+.content {
+    height: 90%;
+    background-color: #FFFFFF;
+    border-radius: 0 10px 10px 10px;
+}
+.btnMenu {
+    background-color: white;
+    border: none;
+    border-radius: 10px 10px 0 0;
+    font-size: 120%;
+    height: 100%;
+    width: 20%;
 
-.top-row {
+}
+.divBtn {
+    display: flex;
+    justify-content: space-between;
+}
+/*.sidebar {
+    background-image: linear-gradient(180deg, rgb(5, 39, 103) 0%, #3a0647 70%);
+}*/
+/*.top-row {
     background-color: #f7f7f7;
     border-bottom: 1px solid #d6d5d5;
     justify-content: flex-end;
@@ -34,8 +58,7 @@ main {
     .top-row ::deep a:first-child {
         overflow: hidden;
         text-overflow: ellipsis;
-    }
-
+    }*/
 @media (max-width: 640.98px) {
     .top-row:not(.auth) {
         display: none;

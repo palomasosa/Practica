@@ -34,6 +34,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/palos/source/repos/ConesaApp/ConesaApp/Client/Pages/Main/Clientes.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpblxDbGllbnRlcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/palos/source/repos/ConesaApp/ConesaApp/Client/Pages/Main/Pagos.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpblxQYWdvcy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/palos/source/repos/ConesaApp/ConesaApp/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
@@ -41,6 +49,10 @@ build_metadata.AdditionalFiles.CssScope =
 [C:/Users/palos/source/repos/ConesaApp/ConesaApp/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/palos/source/repos/ConesaApp/ConesaApp/Client/Shared/Buscador.razor]
+build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEJ1c2NhZG9yLnJhem9y
+build_metadata.AdditionalFiles.CssScope = b-4jihwlmx48
 
 [C:/Users/palos/source/repos/ConesaApp/ConesaApp/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=

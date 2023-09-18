@@ -3,13 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.1.32421.90
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConesaApp.Server", "ConesaApp\Server\ConesaApp.Server.csproj", "{EACD09F8-BF2A-4CCA-B6C2-1974B4278E0C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConesaApp.Server", "ConesaApp\Server\ConesaApp.Server.csproj", "{EACD09F8-BF2A-4CCA-B6C2-1974B4278E0C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConesaApp.Client", "ConesaApp\Client\ConesaApp.Client.csproj", "{5CF44860-B60C-4A57-83E0-DB47EF4C8C2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConesaApp.Client", "ConesaApp\Client\ConesaApp.Client.csproj", "{5CF44860-B60C-4A57-83E0-DB47EF4C8C2C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConesaApp.Shared", "ConesaApp\Shared\ConesaApp.Shared.csproj", "{F2406386-40F3-4ECA-A738-6E5C6E309E70}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConesaApp.Shared", "ConesaApp\Shared\ConesaApp.Shared.csproj", "{F2406386-40F3-4ECA-A738-6E5C6E309E70}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConesaApp.Database", "ConesaApp.Database\ConesaApp.Database.csproj", "{384013E7-54D2-4304-A934-07ED8E08AD5D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConesaApp.Database", "ConesaApp.Database\ConesaApp.Database.csproj", "{384013E7-54D2-4304-A934-07ED8E08AD5D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
