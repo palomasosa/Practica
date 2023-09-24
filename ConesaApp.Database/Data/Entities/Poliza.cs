@@ -2,19 +2,19 @@
 
 namespace ConesaApp.Database.Data.Entities
 {
-    [Index(nameof(polizaID), Name = "polizaID_UQ", IsUnique = true)]
+    [Index(nameof(PolizaID), Name = "polizaID_UQ", IsUnique = true)]
     public class Poliza
     {
-        public int polizaID { get; set; }
-        public int nroPoliza { get; set; }
+        public int PolizaID { get; set; }
+        public int NroPoliza { get; set; }
         public bool Actualizado { get; set; }
-        public decimal valorAsegurado { get; set; }
-        public DateTime inicioVigencia { get; set; }
-        public DateTime finVigencia { get; set; }
-        public decimal valorCuota { get; set; }
-        public int empresaID { get; set; }
-        public int coberturaID { get; set; }
-        public ICollection<Vehiculo>? Vehiculos { get; set; }
-        public ICollection<Pagos>? Pagos { get; set; }
+        public decimal ValorAsegurado { get; set; }
+        public DateTime InicioVigencia { get; set; }
+        public DateTime FinVigencia { get; set; }
+        public decimal ValorCuota { get; set; }
+        public int EmpresaID { get; set; }
+        public int CoberturaID { get; set; }
+        public List<Pagos> Pagos { get; set; }
+        public Vehiculo Vehiculo { get; set; }
     }
 }

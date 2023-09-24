@@ -1,5 +1,55 @@
-﻿<h3>Clientes</h3>
+﻿@using ConesaApp.Client.Pages.Services
+@using ConesaApp.Database.Data.Entities
+
+@inject IHttpService http
+@page "/Inicio/Clientes"
+
+    <div class="mainContainer">
+        <table>
+          <tr>
+            <th>Nombre</th>
+            <th>Teléfono</th>
+            <th>Patente</th>
+            <th>Tipo de seguro</th>
+            <th>----</th>
+            <th>Estado</th>
+            <th>Actualizado</th>
+          </tr>
+          @foreach (Vehiculo v in vehiculos)
+         {
+             <tr>
+             @*  <td>@v.Cliente.nombre @v.Cliente.apellido</td>*@
+         @*      <td>@v.Cliente.telefono</td>*@
+               <td>@v.Patente</td>
+     @*          <td>@v.Poliza.coberturaID</td>*@
+               <td>--</td>
+        @*       @if (v.Poliza.finVigencia < DateTime.Today)*@
+                    {
+                    <td>Vencido</td>
+                }
+                else
+                {
+                    <td>Activo</td>
+                }
+                <td>--</td>
+             </tr>
+         }
+        </table>
+    </div>
 
 @code {
-
+    List<Vehiculo> vehiculos = new List<Vehiculo>();
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+        await readVehiculos();
+    }
+    private async Task readVehiculos()
+    {
+        var respuesta = await http.Get<List<Vehiculo>>($"/Vehiculos");
+        if (!respuesta.Error)
+        {
+            vehiculos = respuesta.Respuesta;
+        }
+    }
 }

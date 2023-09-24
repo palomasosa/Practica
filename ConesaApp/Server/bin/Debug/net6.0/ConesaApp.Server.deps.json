@@ -669,6 +669,7 @@
       },
       "ConesaApp.Client/1.0.0": {
         "dependencies": {
+          "ConesaApp.Database": "1.0.0",
           "ConesaApp.Shared": "1.0.0",
           "Microsoft.AspNetCore.Components.WebAssembly": "6.0.22"
         },

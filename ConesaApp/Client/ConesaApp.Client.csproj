@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\ConesaApp.Database\ConesaApp.Database.csproj" />
     <ProjectReference Include="..\Shared\ConesaApp.Shared.csproj" />
   </ItemGroup>
 

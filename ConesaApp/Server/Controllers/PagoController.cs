@@ -8,7 +8,7 @@ using ConesaApp.Database.Data;
 
 namespace ConesaApp.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Pago")]
     [ApiController]
     public class PagoController : ControllerBase
     {
@@ -35,7 +35,7 @@ namespace ConesaApp.Server.Controllers
             {
                 return NotFound();
             }
-            var pago = await _dbContext.Pagos.Where(x => x.pagoID == id).FirstOrDefaultAsync();
+            var pago = await _dbContext.Pagos.Where(x => x.PagoID == id).FirstOrDefaultAsync();
             if (pago == null)
             {
                 return NotFound($"No existe un pago de ID= {id}");
@@ -52,7 +52,7 @@ namespace ConesaApp.Server.Controllers
                 _dbContext.Pagos.Add(pago);
                 await _dbContext.SaveChangesAsync();
                 //Aca nos devuelve el cliente recién creado
-                return pago.pagoID;
+                return pago.PagoID;
             }
             catch (Exception err)
             {
@@ -82,20 +82,20 @@ namespace ConesaApp.Server.Controllers
             //}
             //return Ok($"Se ha modificado el pago de ID {pago.pagoID}");
             var pagoSolicitado = _dbContext.Pagos
-   .Where(e => e.pagoID == id).FirstOrDefault();
+   .Where(e => e.PagoID == id).FirstOrDefault();
 
             if (pagoSolicitado == null)
             {
                 return NotFound("No se encontró el pago a modificar");
             }
 
-            pagoSolicitado.usuarioID = pago.usuarioID;
-            pagoSolicitado.polizaID = pago.polizaID;
-            pagoSolicitado.clienteID = pago.clienteID;
-            pagoSolicitado.fecha = pago.fecha;
-            pagoSolicitado.metodoID = pago.metodoID;
-            pagoSolicitado.monto = pago.monto;
-            pagoSolicitado.polizaID = pago.polizaID;
+            pagoSolicitado.UsuarioID = pago.UsuarioID;
+            pagoSolicitado.PolizaID = pago.PolizaID;
+            pagoSolicitado.ClienteID = pago.ClienteID;
+            pagoSolicitado.Fecha = pago.Fecha;
+            pagoSolicitado.MetodoID = pago.MetodoID;
+            pagoSolicitado.Monto = pago.Monto;
+            pagoSolicitado.PolizaID = pago.PolizaID;
 
             try
             {
@@ -112,7 +112,7 @@ namespace ConesaApp.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<int>> DeletePago(int id)
         {
-            var pago = _dbContext.Pagos.Where(x => x.pagoID == id).FirstOrDefault();
+            var pago = _dbContext.Pagos.Where(x => x.PagoID == id).FirstOrDefault();
             if (pago == null)
             {
                 return NotFound($"No se encontró el pago de Id {id}");
@@ -121,7 +121,7 @@ namespace ConesaApp.Server.Controllers
             {
                 _dbContext.Pagos.Remove(pago);
                 await _dbContext.SaveChangesAsync();
-                return Ok($"El registro de  ID: {pago.pagoID} se ha eliminado correctamente");
+                return Ok($"El registro de  ID: {pago.PagoID} se ha eliminado correctamente");
             }
             catch (Exception e)
             {

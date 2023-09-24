@@ -3,17 +3,17 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ConesaApp.Database.Data.Entities
 {
-    [Index(nameof(clienteID), Name = "clienteID_UQ", IsUnique = true)]
+    [Index(nameof(ClienteID), Name = "clienteID_UQ", IsUnique = true)]
     public class Cliente
     {
-        [Key] public int clienteID { get; set; }
-        public string nombre { get; set; }
-        public string apellido { get; set; }
-        public string? mail { get; set; }
-        public string direccion { get; set; }
-        public string telefono { get; set; }
-        public string? ciudad { get; set; }
-        public ICollection<Pagos>? Pagos { get; set; }
-        public ICollection<Vehiculo>? Vehiculos { get; set; }
+        [Key] public int ClienteID { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public string? Mail { get; set; }
+        public string Direccion { get; set; }
+        public string Telefono { get; set; }
+        public string? Ciudad { get; set; }
+        public List<Pagos>? Pagos { get; set; }
+        public List<Vehiculo>? Vehiculos { get; set; }
     }
 }

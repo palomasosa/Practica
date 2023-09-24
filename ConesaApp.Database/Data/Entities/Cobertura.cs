@@ -3,11 +3,11 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ConesaApp.Database.Data.Entities
 {
-    [Index(nameof(coberturaID), Name = "coberturaID_UQ", IsUnique = true)]
+    [Index(nameof(CoberturaID), Name = "coberturaID_UQ", IsUnique = true)]
     public class Cobertura
     {
-        [Key] public int coberturaID { get; set; }
-        public string tipo { get; set; }
-        public ICollection<Poliza>? Polizas { get; set; }
+        [Key] public int CoberturaID { get; set; }
+        public string Tipo { get; set; }
+        public List<Poliza> Polizas { get; set; }
     }
 }

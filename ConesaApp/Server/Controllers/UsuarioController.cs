@@ -8,7 +8,7 @@ using ConesaApp.Database.Data;
 
 namespace ConesaApp.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Usuario")]
     [ApiController]
     public class UsuarioController : ControllerBase
     {

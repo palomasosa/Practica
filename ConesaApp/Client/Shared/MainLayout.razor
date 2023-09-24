@@ -1,4 +1,5 @@
-﻿@inherits LayoutComponentBase
+﻿@using ConesaApp.Client.Pages.Main
+@inherits LayoutComponentBase
 
 <div class="page">
     @*<div class="sidebar">
@@ -10,7 +11,7 @@
 
         <div class="mainConainer">
             <div class="topMenu">
-                <button class="btnMenu">
+                <button @onclick="btnOnclickCliente" class="btnMenu">
                     <div class="divBtn">
                         <span>Clientes</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -18,7 +19,7 @@
                         </svg>
                     </div>
                 </button>
-                <button class="btnMenu">
+                <button @onclick="btnOnclickPago" class="btnMenu">
                     <div class="divBtn">
                         <span>Pagos</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
@@ -32,10 +33,35 @@
             </div>
             <div class="content">
                 <div class="searcher">
-                    <Buscador/>
+                    <button class="btnNuevo">
+                        <span>Nuevo @txtBtnAgregar</span>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                          <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
+                        </svg>
+                    </button>
+                    <div class="buscador">
+                        <input type="text" class="inputBusqueda" value="Búsqueda..."/>
+                        <button class="btnLupa">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-                <div class="switches">
-                
+                <div class="switches" hidden=@hiddenSwitches>
+                    <span>Actualizados</span>
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                    <span>Vencimientos</span>
+                    <label class="switch">
+                      <input type="checkbox">
+                      <span class="slider round"></span>
+                    </label>
+                </div>
+                <div class="list">
+                    <Clientes/>
                 </div>
             </div>
         </div>
@@ -46,3 +72,18 @@
         </article>*@
     </main>
 </div>
+@code{
+    string txtBtnAgregar = "cliente";
+    bool hiddenSwitches = false;
+    void btnOnclickCliente()
+    {
+        txtBtnAgregar = "cliente";
+        hiddenSwitches = false;
+    }
+    void btnOnclickPago()
+    {
+        txtBtnAgregar = "pago";
+        hiddenSwitches = true;
+    }
+
+}

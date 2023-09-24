@@ -8,7 +8,7 @@ using ConesaApp.Database.Data;
 
 namespace ConesaApp.Server.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/Cliente")]
     [ApiController]
     public class ClienteController : ControllerBase
     {
@@ -18,15 +18,28 @@ namespace ConesaApp.Server.Controllers
             _dbContext = dbContext;
         }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
+        [HttpGet("/Clientes")]
+        public async Task<ActionResult<List<Cliente>>> GetClientes()
         {
-            if (_dbContext.Clientes == null)
+            var clientes = await _dbContext.Clientes
+                                .ToListAsync();
+
+            if (clientes == null)
             {
-                return NotFound();
+                return NotFound($"No hay clientes para mostrar");
+
             }
-            return await _dbContext.Clientes.ToListAsync(); 
+
+            return clientes;
         }
+        //public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
+        //{
+        //    if (_dbContext.Clientes == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return await _dbContext.Clientes.ToListAsync(); 
+        //}
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Cliente>> GetClienteId(int id)
@@ -35,7 +48,7 @@ namespace ConesaApp.Server.Controllers
             {
                 return NotFound();
             }
-            var cliente = await _dbContext.Clientes.Where(x => x.clienteID == id).FirstOrDefaultAsync();
+            var cliente = await _dbContext.Clientes.Where(x => x.ClienteID == id).FirstOrDefaultAsync();
             if (cliente == null)
             {
                 return NotFound($"No existe un cliente de ID= {id}");
@@ -52,7 +65,7 @@ namespace ConesaApp.Server.Controllers
                 _dbContext.Clientes.Add(cliente);
                 await _dbContext.SaveChangesAsync();
                 //Aca nos devuelve el cliente recién creado
-                return cliente.clienteID;
+                return cliente.ClienteID;
             }
             catch (Exception err)
             {
@@ -81,19 +94,19 @@ namespace ConesaApp.Server.Controllers
             //}
             //return Ok($"Se ha modificado el cliente {cliente.nombre} {cliente.apellido}");
             var clienteSolicitado = _dbContext.Clientes
-               .Where(e => e.clienteID == id).FirstOrDefault();
+               .Where(e => e.ClienteID == id).FirstOrDefault();
 
             if (clienteSolicitado == null)
             {
                 return NotFound("No se encontró el cliente a modificar");
             }
 
-            clienteSolicitado.telefono = cliente.telefono;
-            clienteSolicitado.mail = cliente.mail;
-            clienteSolicitado.nombre = cliente.nombre;
-            clienteSolicitado.apellido = cliente.apellido;
-            clienteSolicitado.ciudad = cliente.ciudad;
-            clienteSolicitado.direccion = cliente.direccion;
+            clienteSolicitado.Telefono = cliente.Telefono;
+            clienteSolicitado.Mail = cliente.Mail;
+            clienteSolicitado.Nombre = cliente.Nombre;
+            clienteSolicitado.Apellido = cliente.Apellido;
+            clienteSolicitado.Ciudad = cliente.Ciudad;
+            clienteSolicitado.Direccion = cliente.Direccion;
 
             try
             {
@@ -110,7 +123,7 @@ namespace ConesaApp.Server.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<int>> DeleteCliente(int id)
         {
-            var cliente = _dbContext.Clientes.Where(x => x.clienteID == id).FirstOrDefault();
+            var cliente = _dbContext.Clientes.Where(x => x.ClienteID == id).FirstOrDefault();
             if (cliente == null)
             {
                 return NotFound($"No se encontró el cliente de Id {id}");
@@ -119,7 +132,7 @@ namespace ConesaApp.Server.Controllers
             {
                 _dbContext.Clientes.Remove(cliente);
                 await _dbContext.SaveChangesAsync();
-                return Ok($"El registro de {cliente.nombre} {cliente.apellido} se ha eliminado correctamente");
+                return Ok($"El registro de {cliente.Nombre} {cliente.Apellido} se ha eliminado correctamente");
             }
             catch (Exception e)
             {
