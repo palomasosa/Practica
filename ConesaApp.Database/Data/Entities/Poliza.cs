@@ -13,8 +13,10 @@ namespace ConesaApp.Database.Data.Entities
         public DateTime FinVigencia { get; set; }
         public decimal ValorCuota { get; set; }
         public int EmpresaID { get; set; }
+        public Empresa Empresa { get; set; }
         public int CoberturaID { get; set; }
-        public List<Pagos> Pagos { get; set; }
-        public Vehiculo Vehiculo { get; set; }
+        public Cobertura Cobertura { get; set; }
+        public virtual List<Pagos> Pagos { get; set; }
+        public virtual Vehiculo Vehiculo { get; set; }
     }
 }

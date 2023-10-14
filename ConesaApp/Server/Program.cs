@@ -2,10 +2,17 @@ using Microsoft.AspNetCore.ResponseCompression;
 using ConesaApp.Database.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddControllersWithViews().AddJsonOptions(
+    x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+
+
 var conn = builder.Configuration.GetConnectionString("conn");
 builder.Services.AddDbContext<DataBaseContext>(opciones => opciones.UseSqlServer(conn)); //Agrega DBContext
 

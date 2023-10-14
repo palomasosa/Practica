@@ -96,18 +96,18 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.MetodoPago", b =>
                 {
-                    b.Property<int>("metodoPagoID")
+                    b.Property<int>("MetodoPagoID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("metodoPagoID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MetodoPagoID"), 1L, 1);
 
-                    b.Property<string>("metodo")
+                    b.Property<string>("Metodo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("metodoPagoID");
+                    b.HasKey("MetodoPagoID");
 
-                    b.HasIndex(new[] { "metodoPagoID" }, "metodoPagoID_UQ")
+                    b.HasIndex(new[] { "MetodoPagoID" }, "metodoPagoID_UQ")
                         .IsUnique();
 
                     b.ToTable("MetodoPagos");
@@ -127,7 +127,7 @@ namespace ConesaApp.Database.Migrations
                     b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("MetodoID")
+                    b.Property<int>("MetodoPagoID")
                         .HasColumnType("int");
 
                     b.Property<decimal>("Monto")
@@ -139,18 +139,15 @@ namespace ConesaApp.Database.Migrations
                     b.Property<int>("UsuarioID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("metodoPagoID")
-                        .HasColumnType("int");
-
                     b.HasKey("PagoID");
 
                     b.HasIndex("ClienteID");
 
+                    b.HasIndex("MetodoPagoID");
+
                     b.HasIndex("PolizaID");
 
                     b.HasIndex("UsuarioID");
-
-                    b.HasIndex("metodoPagoID");
 
                     b.HasIndex(new[] { "PagoID" }, "pagoID_UQ")
                         .IsUnique();
@@ -271,6 +268,12 @@ namespace ConesaApp.Database.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
+                    b.HasOne("ConesaApp.Database.Data.Entities.MetodoPago", "MetodoPago")
+                        .WithMany("Pagos")
+                        .HasForeignKey("MetodoPagoID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("ConesaApp.Database.Data.Entities.Poliza", "Poliza")
                         .WithMany("Pagos")
                         .HasForeignKey("PolizaID")
@@ -283,11 +286,6 @@ namespace ConesaApp.Database.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ConesaApp.Database.Data.Entities.MetodoPago", "MetodoPago")
-                        .WithMany("Pagos")
-                        .HasForeignKey("metodoPagoID")
-                        .OnDelete(DeleteBehavior.Restrict);
-
                     b.Navigation("Cliente");
 
                     b.Navigation("MetodoPago");
@@ -299,17 +297,21 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Poliza", b =>
                 {
-                    b.HasOne("ConesaApp.Database.Data.Entities.Cobertura", null)
+                    b.HasOne("ConesaApp.Database.Data.Entities.Cobertura", "Cobertura")
                         .WithMany("Polizas")
                         .HasForeignKey("CoberturaID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("ConesaApp.Database.Data.Entities.Empresa", null)
+                    b.HasOne("ConesaApp.Database.Data.Entities.Empresa", "Empresa")
                         .WithMany("Polizas")
                         .HasForeignKey("EmpresaID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Cobertura");
+
+                    b.Navigation("Empresa");
                 });
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Vehiculo", b =>

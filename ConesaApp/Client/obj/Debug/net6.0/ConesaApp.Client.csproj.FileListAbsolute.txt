@@ -914,3 +914,4 @@ C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\build-gz
 C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\build-gz\tO3hXqxQ.gz
 C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\build-gz\NgibdVVF.gz
 C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\build-gz\Lz6iEpJI.gz
+C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\scopedcss\Pages\Main\Clientes.razor.rz.scp.css

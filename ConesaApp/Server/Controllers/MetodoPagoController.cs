@@ -17,16 +17,30 @@ namespace ConesaApp.Server.Controllers
         {
             _dbContext = dbContext;
         }
-
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<MetodoPago>>> GetMetodoPagos()
+        [HttpGet("/MetodoPago")]
+        public async Task<ActionResult<List<MetodoPago>>> GetMetodosPagos()
         {
-            if (_dbContext.MetodoPagos == null)
+            var metodosPagos = await _dbContext.MetodoPagos
+                                .ToListAsync();
+
+            if (metodosPagos == null)
             {
-                return NotFound();
+                return NotFound($"No hay metodos de pagos para mostrar");
+
             }
-            return await _dbContext.MetodoPagos.ToListAsync();
+
+            return metodosPagos;
         }
+
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<MetodoPago>>> GetMetodoPagos()
+        //{
+        //    if (_dbContext.MetodoPagos == null)
+        //    {
+        //        return NotFound();
+        //    }
+        //    return await _dbContext.MetodoPagos.ToListAsync();
+        //}
 
         //[HttpGet("{id}")]
         //public async Task<ActionResult<MetodoPago>> GetMetodoPagoId(int id)

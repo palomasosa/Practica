@@ -2,16 +2,11 @@
 @inherits LayoutComponentBase
 
 <div class="page">
-    @*<div class="sidebar">
-       <NavMenu />
-       
-    </div>*@
-    
     <main>
 
         <div class="mainConainer">
             <div class="topMenu">
-                <button @onclick="btnOnclickCliente" class="btnMenu">
+                <button @onclick="btnOnclickCliente" class="btnMenu" style="background-color:@backgroundColorBtnClientes; color:@colorBtnClientes;">
                     <div class="divBtn">
                         <span>Clientes</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-people-fill" viewBox="0 0 16 16">
@@ -19,7 +14,7 @@
                         </svg>
                     </div>
                 </button>
-                <button @onclick="btnOnclickPago" class="btnMenu">
+                <button @onclick="btnOnclickPago" class="btnMenu" style="background-color:@backgroundColorBtnPagos; color:@colorBtnPagos;">
                     <div class="divBtn">
                         <span>Pagos</span>
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-cash-coin" viewBox="0 0 16 16">
@@ -35,55 +30,71 @@
                 <div class="searcher">
                     <button class="btnNuevo">
                         <span>Nuevo @txtBtnAgregar</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-plus-lg" viewBox="0 0 16 16">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#FFFFFF" class="bi bi-plus-lg" viewBox="0 0 16 16">
                           <path fill-rule="evenodd" d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2Z"/>
                         </svg>
                     </button>
                     <div class="buscador">
-                        <input type="text" class="inputBusqueda" value="Búsqueda..."/>
+                        <input type="text" class="inputBusqueda" value="Búsqueda..." onfocus="this.value=''"/>
                         <button class="btnLupa">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="#FFFFFF" class="bi bi-search" viewBox="0 0 16 16">
                               <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
                             </svg>
                         </button>
                     </div>
                 </div>
                 <div class="switches" hidden=@hiddenSwitches>
-                    <span>Actualizados</span>
+                    <span style="color:#141C6C;">Actualizados</span>
                     <label class="switch">
                       <input type="checkbox">
                       <span class="slider round"></span>
                     </label>
-                    <span>Vencimientos</span>
+                    <span style="color:#141C6C;">Vencimientos</span>
                     <label class="switch">
                       <input type="checkbox">
                       <span class="slider round"></span>
                     </label>
                 </div>
-                <div class="list">
+                <div class="list" hidden=@hiddenListClientes>
                     <Clientes/>
+                </div>
+                <div class="listPagos" hidden=@hiddenListPagos>
+                    <Pagos/>
                 </div>
             </div>
         </div>
-
-
-@*        <article class="content px-4">
-            @Body
-        </article>*@
     </main>
 </div>
 @code{
     string txtBtnAgregar = "cliente";
     bool hiddenSwitches = false;
+    bool hiddenListClientes = false;
+    bool hiddenListPagos = true;
+    string backgroundColorBtnClientes = "#FFFFFF";
+    string colorBtnClientes = "#141C6C";
+    string backgroundColorBtnPagos = "#5F658E";
+    string colorBtnPagos = "#FFFFFF";
     void btnOnclickCliente()
     {
         txtBtnAgregar = "cliente";
         hiddenSwitches = false;
+        hiddenListPagos = true;
+        hiddenListClientes = false;
+        backgroundColorBtnClientes = "#FFFFFF";
+        colorBtnClientes = "#141C6C";
+        backgroundColorBtnPagos = "#5F658E";
+        colorBtnPagos = "#FFFFFF";
     }
     void btnOnclickPago()
     {
         txtBtnAgregar = "pago";
         hiddenSwitches = true;
+        hiddenListClientes = true;
+        hiddenListPagos = false;
+        backgroundColorBtnPagos = "#FFFFFF";
+        colorBtnPagos = "#141C6C";
+        backgroundColorBtnClientes = "#5F658E";
+        colorBtnClientes = "#FFFFFF";
     }
 
 }

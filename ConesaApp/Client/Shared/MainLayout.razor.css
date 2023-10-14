@@ -20,6 +20,8 @@ main {
     height: 90%;
     background-color: #FFFFFF;
     border-radius: 10px 10px 10px 10px;
+    padding: 15px;
+    /* */overflow: auto;
 }
 .btnMenu {
     background-color: white;
@@ -41,7 +43,8 @@ main {
     border-radius: 20px;
     width: 25%;
     height: 40px;
-    background-color: #c4d5e7;
+    background-color: #ACA4CC;
+    padding: 10px;
     /*#c4d5e7*/
 }
 
@@ -51,12 +54,19 @@ main {
     border: none;
     background-color: transparent;
     border-radius: 10px;
+    color: #FFFFFF;
 }
 .inputBusqueda:hover
 {
     outline-style: none;
 }
-
+.list
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 79%;
+}
 .btnLupa {
     border: none;
     background: none;
@@ -64,7 +74,7 @@ main {
 .searcher {
     display: flex;
     justify-content: space-between;
-    padding: 0 15px;
+    /*padding: 0 15px;*/
 }
 .btnNuevo {
     border-radius: 8px;
@@ -74,7 +84,8 @@ main {
     border: none;
     padding: 0 10px;
     align-items: center;
-    background-color: #c4d5e7;
+    background-color: #5F658E;
+    color: #FFFFFF;
 }
 
 /*Slide button CSS*/
@@ -101,7 +112,7 @@ main {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #ccc;
+    background-color: #ACA4CC;
     -webkit-transition: .4s;
     transition: .4s;
     width: 50px;
@@ -121,7 +132,7 @@ main {
     }
 
 input:checked + .slider {
-    background-color: #2196F3;
+    background-color: #5F658E;
 }
 
 input:focus + .slider {
@@ -148,7 +159,7 @@ input:checked + .slider:before {
     display: flex;
     justify-content: end;
     align-items: center;
-    margin: 15px 5px;
+    margin: 15px 0;
 }
     .switches span {
         margin-right: 10px;

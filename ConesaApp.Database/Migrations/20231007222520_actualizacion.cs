@@ -4,7 +4,7 @@
 
 namespace ConesaApp.Database.Migrations
 {
-    public partial class updatebd : Migration
+    public partial class actualizacion : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -13,6 +13,7 @@ namespace ConesaApp.Database.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+
         }
     }
 }

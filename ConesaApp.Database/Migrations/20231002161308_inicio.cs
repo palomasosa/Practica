@@ -13,57 +13,57 @@ namespace ConesaApp.Database.Migrations
                 name: "Clientes",
                 columns: table => new
                 {
-                    clienteID = table.Column<int>(type: "int", nullable: false)
+                    ClienteID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    apellido = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    direccion = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    telefono = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    ciudad = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Apellido = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Direccion = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Telefono = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Ciudad = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Clientes", x => x.clienteID);
+                    table.PrimaryKey("PK_Clientes", x => x.ClienteID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Coberturas",
                 columns: table => new
                 {
-                    coberturaID = table.Column<int>(type: "int", nullable: false)
+                    CoberturaID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    tipo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Tipo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Coberturas", x => x.coberturaID);
+                    table.PrimaryKey("PK_Coberturas", x => x.CoberturaID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Empresas",
                 columns: table => new
                 {
-                    empresaID = table.Column<int>(type: "int", nullable: false)
+                    EmpresaID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Nombre = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Empresas", x => x.empresaID);
+                    table.PrimaryKey("PK_Empresas", x => x.EmpresaID);
                 });
 
             migrationBuilder.CreateTable(
                 name: "MetodoPagos",
                 columns: table => new
                 {
-                    metodoPagoID = table.Column<int>(type: "int", nullable: false)
+                    MetodoPagoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    metodo = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Metodo = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_MetodoPagos", x => x.metodoPagoID);
+                    table.PrimaryKey("PK_MetodoPagos", x => x.MetodoPagoID);
                 });
 
             migrationBuilder.CreateTable(
@@ -72,9 +72,9 @@ namespace ConesaApp.Database.Migrations
                 {
                     usuarioID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    mail = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    contraseña = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    nombre = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    mail = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    contraseña = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -85,30 +85,31 @@ namespace ConesaApp.Database.Migrations
                 name: "Polizas",
                 columns: table => new
                 {
-                    polizaID = table.Column<int>(type: "int", nullable: false)
+                    PolizaID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    nroPoliza = table.Column<int>(type: "int", nullable: false),
-                    valorAsegurado = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    inicioVigencia = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    finVigencia = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    valorCuota = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    empresaID = table.Column<int>(type: "int", nullable: false),
-                    coberturaID = table.Column<int>(type: "int", nullable: false)
+                    NroPoliza = table.Column<int>(type: "int", nullable: false),
+                    Actualizado = table.Column<bool>(type: "bit", nullable: false),
+                    ValorAsegurado = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    InicioVigencia = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    FinVigencia = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    ValorCuota = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    EmpresaID = table.Column<int>(type: "int", nullable: false),
+                    CoberturaID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Polizas", x => x.polizaID);
+                    table.PrimaryKey("PK_Polizas", x => x.PolizaID);
                     table.ForeignKey(
-                        name: "FK_Polizas_Coberturas_coberturaID",
-                        column: x => x.coberturaID,
+                        name: "FK_Polizas_Coberturas_CoberturaID",
+                        column: x => x.CoberturaID,
                         principalTable: "Coberturas",
-                        principalColumn: "coberturaID",
+                        principalColumn: "CoberturaID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Polizas_Empresas_empresaID",
-                        column: x => x.empresaID,
+                        name: "FK_Polizas_Empresas_EmpresaID",
+                        column: x => x.EmpresaID,
                         principalTable: "Empresas",
-                        principalColumn: "empresaID",
+                        principalColumn: "EmpresaID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -116,40 +117,39 @@ namespace ConesaApp.Database.Migrations
                 name: "Pagos",
                 columns: table => new
                 {
-                    pagoID = table.Column<int>(type: "int", nullable: false)
+                    PagoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    monto = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
-                    polizaID = table.Column<int>(type: "int", nullable: false),
-                    clienteID = table.Column<int>(type: "int", nullable: false),
-                    usuarioID = table.Column<int>(type: "int", nullable: false),
-                    metodoPagoID = table.Column<int>(type: "int", nullable: false),
-                    metodoID = table.Column<int>(type: "int", nullable: false)
+                    Fecha = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Monto = table.Column<decimal>(type: "decimal(18,2)", nullable: false),
+                    PolizaID = table.Column<int>(type: "int", nullable: false),
+                    ClienteID = table.Column<int>(type: "int", nullable: false),
+                    UsuarioID = table.Column<int>(type: "int", nullable: false),
+                    MetodoPagoID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pagos", x => x.pagoID);
+                    table.PrimaryKey("PK_Pagos", x => x.PagoID);
                     table.ForeignKey(
-                        name: "FK_Pagos_Clientes_clienteID",
-                        column: x => x.clienteID,
+                        name: "FK_Pagos_Clientes_ClienteID",
+                        column: x => x.ClienteID,
                         principalTable: "Clientes",
-                        principalColumn: "clienteID",
+                        principalColumn: "ClienteID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Pagos_MetodoPagos_metodoPagoID",
-                        column: x => x.metodoPagoID,
+                        name: "FK_Pagos_MetodoPagos_MetodoPagoID",
+                        column: x => x.MetodoPagoID,
                         principalTable: "MetodoPagos",
-                        principalColumn: "metodoPagoID",
+                        principalColumn: "MetodoPagoID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Pagos_Polizas_polizaID",
-                        column: x => x.polizaID,
+                        name: "FK_Pagos_Polizas_PolizaID",
+                        column: x => x.PolizaID,
                         principalTable: "Polizas",
-                        principalColumn: "polizaID",
+                        principalColumn: "PolizaID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Pagos_Usuarios_usuarioID",
-                        column: x => x.usuarioID,
+                        name: "FK_Pagos_Usuarios_UsuarioID",
+                        column: x => x.UsuarioID,
                         principalTable: "Usuarios",
                         principalColumn: "usuarioID",
                         onDelete: ReferentialAction.Restrict);
@@ -159,95 +159,95 @@ namespace ConesaApp.Database.Migrations
                 name: "Vehiculos",
                 columns: table => new
                 {
-                    vehiculoID = table.Column<int>(type: "int", nullable: false)
+                    VehiculoID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    año = table.Column<int>(type: "int", nullable: true),
-                    patente = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    clienteID = table.Column<int>(type: "int", nullable: false),
-                    polizaID = table.Column<int>(type: "int", nullable: false)
+                    Año = table.Column<int>(type: "int", nullable: true),
+                    Patente = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Marca = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ClienteID = table.Column<int>(type: "int", nullable: false),
+                    PolizaID = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Vehiculos", x => x.vehiculoID);
+                    table.PrimaryKey("PK_Vehiculos", x => x.VehiculoID);
                     table.ForeignKey(
-                        name: "FK_Vehiculos_Clientes_clienteID",
-                        column: x => x.clienteID,
+                        name: "FK_Vehiculos_Clientes_ClienteID",
+                        column: x => x.ClienteID,
                         principalTable: "Clientes",
-                        principalColumn: "clienteID",
+                        principalColumn: "ClienteID",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Vehiculos_Polizas_polizaID",
-                        column: x => x.polizaID,
+                        name: "FK_Vehiculos_Polizas_PolizaID",
+                        column: x => x.PolizaID,
                         principalTable: "Polizas",
-                        principalColumn: "polizaID",
+                        principalColumn: "PolizaID",
                         onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
                 name: "clienteID_UQ",
                 table: "Clientes",
-                column: "clienteID",
+                column: "ClienteID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "coberturaID_UQ",
                 table: "Coberturas",
-                column: "coberturaID",
+                column: "CoberturaID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "empresaID_UQ",
                 table: "Empresas",
-                column: "empresaID",
+                column: "EmpresaID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "metodoPagoID_UQ",
                 table: "MetodoPagos",
-                column: "metodoPagoID",
+                column: "MetodoPagoID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pagos_clienteID",
+                name: "IX_Pagos_ClienteID",
                 table: "Pagos",
-                column: "clienteID");
+                column: "ClienteID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pagos_metodoPagoID",
+                name: "IX_Pagos_MetodoPagoID",
                 table: "Pagos",
-                column: "metodoPagoID");
+                column: "MetodoPagoID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pagos_polizaID",
+                name: "IX_Pagos_PolizaID",
                 table: "Pagos",
-                column: "polizaID");
+                column: "PolizaID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Pagos_usuarioID",
+                name: "IX_Pagos_UsuarioID",
                 table: "Pagos",
-                column: "usuarioID");
+                column: "UsuarioID");
 
             migrationBuilder.CreateIndex(
                 name: "pagoID_UQ",
                 table: "Pagos",
-                column: "pagoID",
+                column: "PagoID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Polizas_coberturaID",
+                name: "IX_Polizas_CoberturaID",
                 table: "Polizas",
-                column: "coberturaID");
+                column: "CoberturaID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Polizas_empresaID",
+                name: "IX_Polizas_EmpresaID",
                 table: "Polizas",
-                column: "empresaID");
+                column: "EmpresaID");
 
             migrationBuilder.CreateIndex(
                 name: "polizaID_UQ",
                 table: "Polizas",
-                column: "polizaID",
+                column: "PolizaID",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -257,19 +257,20 @@ namespace ConesaApp.Database.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vehiculos_clienteID",
+                name: "IX_Vehiculos_ClienteID",
                 table: "Vehiculos",
-                column: "clienteID");
+                column: "ClienteID");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Vehiculos_polizaID",
+                name: "IX_Vehiculos_PolizaID",
                 table: "Vehiculos",
-                column: "polizaID");
+                column: "PolizaID",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "vehiculoID_UQ",
                 table: "Vehiculos",
-                column: "vehiculoID",
+                column: "VehiculoID",
                 unique: true);
         }
 

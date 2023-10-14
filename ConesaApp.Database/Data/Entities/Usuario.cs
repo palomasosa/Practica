@@ -10,6 +10,6 @@ namespace ConesaApp.Database.Data.Entities
         public string nombre { get; set; }
         public string mail { get; set; }
         public string contraseña { get; set; }
-        public ICollection<Pagos>? Pagos { get; set; }
+        public List<Pagos>? Pagos { get; set; }
     }
 }

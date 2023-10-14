@@ -17,8 +17,8 @@ namespace ConesaApp.Database.Data.Entities
         public string Patente { get; set; }
         public string? Marca { get; set; }
         public int ClienteID { get; set; }
-        public Cliente Cliente { get; set; }    
+        public virtual Cliente Cliente { get; set; }    
         public int PolizaID { get; set; }
-        public Poliza Poliza { get; set; }
+        public virtual Poliza Poliza { get; set; }
     }
 }

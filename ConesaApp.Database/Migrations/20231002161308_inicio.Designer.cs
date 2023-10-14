@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConesaApp.Database.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20230923024124_prueba2")]
-    partial class prueba2
+    [Migration("20231002161308_inicio")]
+    partial class inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,37 +26,33 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Cliente", b =>
                 {
-                    b.Property<int>("clienteID")
+                    b.Property<int>("ClienteID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("clienteID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ClienteID"), 1L, 1);
 
-                    b.Property<string>("apellido")
-                        .IsRequired()
+                    b.Property<string>("Apellido")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ciudad")
+                    b.Property<string>("Ciudad")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("direccion")
-                        .IsRequired()
+                    b.Property<string>("Direccion")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("mail")
+                    b.Property<string>("Mail")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("nombre")
-                        .IsRequired()
+                    b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("telefono")
-                        .IsRequired()
+                    b.Property<string>("Telefono")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("clienteID");
+                    b.HasKey("ClienteID");
 
-                    b.HasIndex(new[] { "clienteID" }, "clienteID_UQ")
+                    b.HasIndex(new[] { "ClienteID" }, "clienteID_UQ")
                         .IsUnique();
 
                     b.ToTable("Clientes");
@@ -64,19 +60,18 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Cobertura", b =>
                 {
-                    b.Property<int>("coberturaID")
+                    b.Property<int>("CoberturaID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("coberturaID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("CoberturaID"), 1L, 1);
 
-                    b.Property<string>("tipo")
-                        .IsRequired()
+                    b.Property<string>("Tipo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("coberturaID");
+                    b.HasKey("CoberturaID");
 
-                    b.HasIndex(new[] { "coberturaID" }, "coberturaID_UQ")
+                    b.HasIndex(new[] { "CoberturaID" }, "coberturaID_UQ")
                         .IsUnique();
 
                     b.ToTable("Coberturas");
@@ -84,19 +79,18 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Empresa", b =>
                 {
-                    b.Property<int>("empresaID")
+                    b.Property<int>("EmpresaID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("empresaID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("EmpresaID"), 1L, 1);
 
-                    b.Property<string>("nombre")
-                        .IsRequired()
+                    b.Property<string>("Nombre")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("empresaID");
+                    b.HasKey("EmpresaID");
 
-                    b.HasIndex(new[] { "empresaID" }, "empresaID_UQ")
+                    b.HasIndex(new[] { "EmpresaID" }, "empresaID_UQ")
                         .IsUnique();
 
                     b.ToTable("Empresas");
@@ -104,19 +98,18 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.MetodoPago", b =>
                 {
-                    b.Property<int>("metodoPagoID")
+                    b.Property<int>("MetodoPagoID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("metodoPagoID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("MetodoPagoID"), 1L, 1);
 
-                    b.Property<string>("metodo")
-                        .IsRequired()
+                    b.Property<string>("Metodo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("metodoPagoID");
+                    b.HasKey("MetodoPagoID");
 
-                    b.HasIndex(new[] { "metodoPagoID" }, "metodoPagoID_UQ")
+                    b.HasIndex(new[] { "MetodoPagoID" }, "metodoPagoID_UQ")
                         .IsUnique();
 
                     b.ToTable("MetodoPagos");
@@ -124,44 +117,41 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Pagos", b =>
                 {
-                    b.Property<int>("pagoID")
+                    b.Property<int>("PagoID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("pagoID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PagoID"), 1L, 1);
 
-                    b.Property<int>("clienteID")
+                    b.Property<int>("ClienteID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("fecha")
+                    b.Property<DateTime>("Fecha")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("metodoID")
+                    b.Property<int>("MetodoPagoID")
                         .HasColumnType("int");
 
-                    b.Property<int>("metodoPagoID")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("monto")
+                    b.Property<decimal>("Monto")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<int>("polizaID")
+                    b.Property<int>("PolizaID")
                         .HasColumnType("int");
 
-                    b.Property<int>("usuarioID")
+                    b.Property<int>("UsuarioID")
                         .HasColumnType("int");
 
-                    b.HasKey("pagoID");
+                    b.HasKey("PagoID");
 
-                    b.HasIndex("clienteID");
+                    b.HasIndex("ClienteID");
 
-                    b.HasIndex("metodoPagoID");
+                    b.HasIndex("MetodoPagoID");
 
-                    b.HasIndex("polizaID");
+                    b.HasIndex("PolizaID");
 
-                    b.HasIndex("usuarioID");
+                    b.HasIndex("UsuarioID");
 
-                    b.HasIndex(new[] { "pagoID" }, "pagoID_UQ")
+                    b.HasIndex(new[] { "PagoID" }, "pagoID_UQ")
                         .IsUnique();
 
                     b.ToTable("Pagos");
@@ -169,43 +159,43 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Poliza", b =>
                 {
-                    b.Property<int>("polizaID")
+                    b.Property<int>("PolizaID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("polizaID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("PolizaID"), 1L, 1);
 
                     b.Property<bool>("Actualizado")
                         .HasColumnType("bit");
 
-                    b.Property<int>("coberturaID")
+                    b.Property<int>("CoberturaID")
                         .HasColumnType("int");
 
-                    b.Property<int>("empresaID")
+                    b.Property<int>("EmpresaID")
                         .HasColumnType("int");
 
-                    b.Property<DateTime>("finVigencia")
+                    b.Property<DateTime>("FinVigencia")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("inicioVigencia")
+                    b.Property<DateTime>("InicioVigencia")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("nroPoliza")
+                    b.Property<int>("NroPoliza")
                         .HasColumnType("int");
 
-                    b.Property<decimal>("valorAsegurado")
+                    b.Property<decimal>("ValorAsegurado")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("valorCuota")
+                    b.Property<decimal>("ValorCuota")
                         .HasColumnType("decimal(18,2)");
 
-                    b.HasKey("polizaID");
+                    b.HasKey("PolizaID");
 
-                    b.HasIndex("coberturaID");
+                    b.HasIndex("CoberturaID");
 
-                    b.HasIndex("empresaID");
+                    b.HasIndex("EmpresaID");
 
-                    b.HasIndex(new[] { "polizaID" }, "polizaID_UQ")
+                    b.HasIndex(new[] { "PolizaID" }, "polizaID_UQ")
                         .IsUnique();
 
                     b.ToTable("Polizas");
@@ -220,15 +210,12 @@ namespace ConesaApp.Database.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("usuarioID"), 1L, 1);
 
                     b.Property<string>("contraseña")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("mail")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("nombre")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("usuarioID");
@@ -241,35 +228,35 @@ namespace ConesaApp.Database.Migrations
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Vehiculo", b =>
                 {
-                    b.Property<int>("vehiculoID")
+                    b.Property<int>("VehiculoID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("vehiculoID"), 1L, 1);
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VehiculoID"), 1L, 1);
+
+                    b.Property<int?>("Año")
+                        .HasColumnType("int");
 
                     b.Property<int>("ClienteID")
                         .HasColumnType("int");
 
+                    b.Property<string>("Marca")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Patente")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("PolizaID")
                         .HasColumnType("int");
 
-                    b.Property<int?>("año")
-                        .HasColumnType("int");
-
-                    b.Property<string>("marca")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("patente")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("vehiculoID");
+                    b.HasKey("VehiculoID");
 
                     b.HasIndex("ClienteID");
 
-                    b.HasIndex("PolizaID");
+                    b.HasIndex("PolizaID")
+                        .IsUnique();
 
-                    b.HasIndex(new[] { "vehiculoID" }, "vehiculoID_UQ")
+                    b.HasIndex(new[] { "VehiculoID" }, "vehiculoID_UQ")
                         .IsUnique();
 
                     b.ToTable("Vehiculos");
@@ -279,25 +266,25 @@ namespace ConesaApp.Database.Migrations
                 {
                     b.HasOne("ConesaApp.Database.Data.Entities.Cliente", "Cliente")
                         .WithMany("Pagos")
-                        .HasForeignKey("clienteID")
+                        .HasForeignKey("ClienteID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ConesaApp.Database.Data.Entities.MetodoPago", "MetodoPago")
                         .WithMany("Pagos")
-                        .HasForeignKey("metodoPagoID")
+                        .HasForeignKey("MetodoPagoID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ConesaApp.Database.Data.Entities.Poliza", "Poliza")
                         .WithMany("Pagos")
-                        .HasForeignKey("polizaID")
+                        .HasForeignKey("PolizaID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ConesaApp.Database.Data.Entities.Usuario", "Usuario")
                         .WithMany("Pagos")
-                        .HasForeignKey("usuarioID")
+                        .HasForeignKey("UsuarioID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -314,13 +301,13 @@ namespace ConesaApp.Database.Migrations
                 {
                     b.HasOne("ConesaApp.Database.Data.Entities.Cobertura", null)
                         .WithMany("Polizas")
-                        .HasForeignKey("coberturaID")
+                        .HasForeignKey("CoberturaID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ConesaApp.Database.Data.Entities.Empresa", null)
                         .WithMany("Polizas")
-                        .HasForeignKey("empresaID")
+                        .HasForeignKey("EmpresaID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
@@ -334,8 +321,8 @@ namespace ConesaApp.Database.Migrations
                         .IsRequired();
 
                     b.HasOne("ConesaApp.Database.Data.Entities.Poliza", "Poliza")
-                        .WithMany()
-                        .HasForeignKey("PolizaID")
+                        .WithOne("Vehiculo")
+                        .HasForeignKey("ConesaApp.Database.Data.Entities.Vehiculo", "PolizaID")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -369,6 +356,8 @@ namespace ConesaApp.Database.Migrations
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Poliza", b =>
                 {
                     b.Navigation("Pagos");
+
+                    b.Navigation("Vehiculo");
                 });
 
             modelBuilder.Entity("ConesaApp.Database.Data.Entities.Usuario", b =>

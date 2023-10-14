@@ -32,16 +32,8 @@ namespace ConesaApp.Server.Controllers
 
             return clientes;
         }
-        //public async Task<ActionResult<IEnumerable<Cliente>>> GetClientes()
-        //{
-        //    if (_dbContext.Clientes == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    return await _dbContext.Clientes.ToListAsync(); 
-        //}
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Cliente>> GetClienteId(int id)
         {
             if (_dbContext.Clientes == null)

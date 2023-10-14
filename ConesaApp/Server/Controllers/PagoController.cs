@@ -21,14 +21,15 @@ namespace ConesaApp.Server.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Pagos>>> GetPagos()
         {
-            if (_dbContext.Pagos == null)
-            {
-                return NotFound();
-            }
-            return await _dbContext.Pagos.ToListAsync();
+            //if (_dbContext.Pagos == null)
+            //{
+            //    return NotFound();
+            //}
+            //return await _dbContext.Pagos.ToListAsync();
+            return await _dbContext.Pagos.Include(x => x.Poliza).Include(y => y.Cliente).Include(z=>z.Usuario).Include(v=>v.MetodoPago).ToListAsync();
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Pagos>> GetPagoId(int id)
         {
             if (_dbContext.Pagos == null)
@@ -93,7 +94,7 @@ namespace ConesaApp.Server.Controllers
             pagoSolicitado.PolizaID = pago.PolizaID;
             pagoSolicitado.ClienteID = pago.ClienteID;
             pagoSolicitado.Fecha = pago.Fecha;
-            pagoSolicitado.MetodoID = pago.MetodoID;
+            pagoSolicitado.MetodoPagoID = pago.MetodoPagoID;
             pagoSolicitado.Monto = pago.Monto;
             pagoSolicitado.PolizaID = pago.PolizaID;
 

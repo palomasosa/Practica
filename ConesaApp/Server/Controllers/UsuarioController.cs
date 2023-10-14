@@ -17,7 +17,20 @@ namespace ConesaApp.Server.Controllers
         {
             _dbContext = dbContext;
         }
+        [HttpGet("/Usuarios")]
+        public async Task<ActionResult<List<Usuario>>> GetUsuarios()
+        {
+            var usuarios = await _dbContext.Usuarios
+                                .ToListAsync();
 
+            if (usuarios == null)
+            {
+                return NotFound($"No hay usuarios para mostrar");
+
+            }
+
+            return usuarios;
+        }
         //[HttpGet]
         //public async Task<ActionResult<IEnumerable<Pagos>>> GetPagos()
         //{

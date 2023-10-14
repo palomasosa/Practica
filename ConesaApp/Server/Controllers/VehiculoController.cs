@@ -21,19 +21,23 @@ namespace ConesaApp.Server.Controllers
         [HttpGet("/Vehiculos")]
         public async Task<ActionResult<List<Vehiculo>>> GetVehiculos()
         {
-            var vehiculos = await _dbContext.Vehiculos
-                                .ToListAsync();
+            //var vehiculos = await _dbContext.Vehiculos
+            //                    .ToListAsync();
 
-            if (vehiculos == null)
-            {
-                return NotFound($"No hay vehículos para mostrar");
+            //if (vehiculos == null)
+            //{
+            //    return NotFound($"No hay vehículos para mostrar");
 
-            }
+            //}
 
-            return vehiculos;
+            //var cliente = await _dbContext.Clientes.ToListAsync();
+
+            //return vehiculos;
+             return await _dbContext.Vehiculos.Include(x => x.Poliza).Include(x=>x.Poliza.Cobertura).Include(y => y.Cliente).ToListAsync();
+
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Vehiculo>> GetVehiculoId(int id)
         {
             if (_dbContext.Vehiculos == null)

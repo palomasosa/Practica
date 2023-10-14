@@ -16,7 +16,7 @@ namespace ConesaApp.Database.Data.Entities
         public Cliente Cliente { get; set; }
         public int UsuarioID { get; set; }
         public Usuario Usuario { get; set; }
-        public int MetodoID { get; set; }
+        public int MetodoPagoID { get; set; }
         public MetodoPago MetodoPago { get; set; }
     }
 }

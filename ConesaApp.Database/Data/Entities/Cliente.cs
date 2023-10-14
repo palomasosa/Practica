@@ -13,7 +13,7 @@ namespace ConesaApp.Database.Data.Entities
         public string Direccion { get; set; }
         public string Telefono { get; set; }
         public string? Ciudad { get; set; }
-        public List<Pagos>? Pagos { get; set; }
-        public List<Vehiculo>? Vehiculos { get; set; }
+        public virtual List<Pagos> Pagos { get; set; }
+        public virtual List<Vehiculo> Vehiculos { get; set; }
     }
 }
