@@ -53,13 +53,16 @@
                       <span class="slider round"></span>
                     </label>
                     <span style="color:#141C6C;">Vencimientos</span>
+                    <input type="date" class="datetime" @bind="fechaDesde"/>
+                    <span class="guion">-</span>
+                    <input type="date" class="datetime" @bind="fechaHasta"/>
                     <label class="switch">
-                      <input type="checkbox">
+                      <input type="checkbox" @bind="busquedaVencimiento"  @onclick="btnVencimiento">
                       <span class="slider round"></span>
                     </label>
                 </div>
                 <div class="list" hidden=@hiddenListClientes>
-                    <Clientes Busqueda="@busquedaActual" CheckboxChecked="@checkboxChecked"/>
+                    <Clientes Busqueda="@busquedaActual" CheckboxChecked="@checkboxChecked" busquedaVencimiento="@busquedaVencimiento" fechaDesde ="@fechaDesde" fechaHasta="@fechaHasta"/>
                 </div>
                 <div class="listPagos" hidden=@hiddenListPagos>
                     <Pagos/>
@@ -74,10 +77,16 @@
     bool hiddenListClientes = false;
     bool hiddenListPagos = true;
     bool checkboxChecked  = false;
+    bool busquedaVencimiento = false;
+
     string backgroundColorBtnClientes = "#FFFFFF";
     string colorBtnClientes = "#141C6C";
     string backgroundColorBtnPagos = "#5F658E";
     string colorBtnPagos = "#FFFFFF";
+
+    DateTime fechaDesde;
+    DateTime fechaHasta;
+    
 
     public string busquedaActual { get; set; }
     private void ActualizarBusqueda(string nuevaBusqueda)
@@ -107,8 +116,12 @@
         backgroundColorBtnClientes = "#5F658E";
         colorBtnClientes = "#FFFFFF";
     }
-     private void OnCheckboxChanged()
-  {
-      checkboxChecked = !checkboxChecked;
-  }
+    private void OnCheckboxChanged()
+    {
+        checkboxChecked = !checkboxChecked;
+    }
+    private void btnVencimiento()
+    {
+        busquedaVencimiento = !busquedaVencimiento;
+    }
 }

@@ -100,6 +100,35 @@ namespace ConesaApp.Server.Controllers
             return vehiculos;
         }
 
+        [HttpGet("/Vehiculos/Vencimiento")]
+        public async Task<ActionResult<List<Vehiculo>>> GetVehiculosPorFechaVencimiento(string fechaInicio, string fechaFin)
+        {
+            bool IsDateTime(string s)
+            {
+                DateTime temp;
+                return DateTime.TryParse(s, out temp);
+            }
+
+            if (!IsDateTime(fechaInicio) || !IsDateTime(fechaFin))
+            {
+                return BadRequest("Las fechas deben estar en formato válido.");
+            }
+
+            DateTime fechaInicioDateTime = DateTime.Parse(fechaInicio);
+            DateTime fechaFinDateTime = DateTime.Parse(fechaFin);
+
+            var vehiculos = _dbContext.Vehiculos
+                                    .Include(v => v.Poliza)
+                                    .Include(v=>v.Cliente)
+                                    .Include(v=>v.Poliza.Cobertura)
+                                    .Where(v => v.Poliza.FinVigencia >= fechaInicioDateTime &&
+                                                v.Poliza.FinVigencia <= fechaFinDateTime)
+                                    .ToList();
+
+            return vehiculos;
+        }
+
+
         #endregion
 
         [HttpPost]

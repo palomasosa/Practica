@@ -164,6 +164,19 @@ input:checked + .slider[b-6i9p38o976]:before {
     .switches span[b-6i9p38o976] {
         margin-right: 10px;
     }
+    .switches .datetime[b-6i9p38o976] {
+        border: none;
+        font-size: 16px;
+        color: #141C6C;
+        outline: none;
+        
+        width: 100px;
+        margin-right: 15px;
+    }
+    .switches .guion[b-6i9p38o976] {
+        margin: 0 15px 0 0;
+        font-size: 20px;
+    }
 @media (max-width: 640.98px) {
     .top-row:not(.auth)[b-6i9p38o976] {
         display: none;

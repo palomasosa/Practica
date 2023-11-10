@@ -18,3 +18,14 @@
         background-color: #FFFFFF;
         color: #141C6C;
     }
+
+ .btnMostrar[b-0ophteuo75] {
+        height: 28px;
+        font-size: 16px;
+        display: flex;
+        align-items: center;
+        border: none;
+        border-radius: 10px;
+        background-color: #5F658E;
+        color: white;
+    }

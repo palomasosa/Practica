@@ -219,7 +219,7 @@
       "System.Private.CoreLib.dll": "sha256-KVnZkFos\/ML\/3S2isVijfmFZXO4zEQeCga6BZvGdTbY=",
       "ConesaApp.Database.dll": "sha256-yKFybScm++mCHr0796\/Zipb0CmMV16SxDdsYsOn4SoM=",
       "ConesaApp.Shared.dll": "sha256-r6qx6+LxRSMKOSwneNdlRw8FBHrbxNru6pKJYZhhsKo=",
-      "ConesaApp.Client.dll": "sha256-aYQ05JLJHiYMXiYCxhDReU1q3OHMe6w3ZGcHKLH\/HlY="
+      "ConesaApp.Client.dll": "sha256-5M8bWS987++WjglpWrfzGB4ZDAaTwTKXe3w3pj8Nfro="
     },
     "extensions": null,
     "lazyAssembly": null,
@@ -227,7 +227,7 @@
     "pdb": {
       "ConesaApp.Database.pdb": "sha256-CIDzbYLO4jNrtOiEJ8L7Seu8imK3GAsUXz\/tY0GHqPQ=",
       "ConesaApp.Shared.pdb": "sha256-lXy3Wpyj8aO0hWwlfdgbiJcvNUb0wk4YsnnQbxZdrog=",
-      "ConesaApp.Client.pdb": "sha256-+tnMeVeMPYw1NWRjfqM2Mvr\/TF0jbv75a2OfrsCLHIQ="
+      "ConesaApp.Client.pdb": "sha256-2Tf0VJzhfFLQf7DfXHtTDFXGgZy35Qu0lP3KmjwzsG8="
     },
     "runtime": {
       "dotnet.6.0.4.qv3sgzvyg2.js": "sha256-WYno\/cK5MDsl5yi4T\/\/QgUskbBfhLL77i+c0uKzO9+c=",

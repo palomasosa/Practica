@@ -164,6 +164,19 @@ input:checked + .slider:before {
     .switches span {
         margin-right: 10px;
     }
+    .switches .datetime {
+        border: none;
+        font-size: 16px;
+        color: #141C6C;
+        outline: none;
+        
+        width: 100px;
+        margin-right: 15px;
+    }
+    .switches .guion {
+        margin: 0 15px 0 0;
+        font-size: 20px;
+    }
 @media (max-width: 640.98px) {
     .top-row:not(.auth) {
         display: none;
