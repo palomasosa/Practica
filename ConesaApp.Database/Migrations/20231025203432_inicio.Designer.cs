@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConesaApp.Database.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20231007222520_actualizacion")]
-    partial class actualizacion
+    [Migration("20231025203432_inicio")]
+    partial class inicio
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -5,6 +5,7 @@
 @page "/Inicio/Clientes"
 
     <div class="mainContainer">
+        <h1>@CheckboxChecked</h1>
         <table class="table">
           <tr>
             <th>Nombre</th>
@@ -55,11 +56,16 @@
     </div>
 
 @code {
+    [Parameter]
+    public string Busqueda { get; set; }
+    [Parameter]
+    public bool CheckboxChecked { get; set; }
     List<Vehiculo> vehiculos = new List<Vehiculo>();
     protected override async Task OnInitializedAsync()
     {
         await base.OnInitializedAsync();
         await readVehiculos();
+        // await readVehiculosActualizados();  
     }
     private async Task readVehiculos()
     {
@@ -68,5 +74,56 @@
         {
             vehiculos = respuesta.Respuesta;
         }
+    }
+    private async Task readVehiculosActualizados()
+    {
+        if (CheckboxChecked)
+        {
+            var respuestaActualizados = await http.Get<List<Vehiculo>>($"/Vehiculos/Actualizados");
+            if (!respuestaActualizados.Error)
+            {
+                vehiculos = respuestaActualizados.Respuesta;
+            }
+        }
+    }
+    protected override async Task OnParametersSetAsync()
+    {
+        
+        if (CheckboxChecked && String.IsNullOrEmpty(Busqueda))
+        {
+            var respuestaActualizados = await http.Get<List<Vehiculo>>($"/Vehiculos/Actualizados");
+            if (!respuestaActualizados.Error)
+            {
+                vehiculos = respuestaActualizados.Respuesta;
+            }
+        }
+        else if(CheckboxChecked && !(String.IsNullOrEmpty(Busqueda)))
+        {
+            var respuestaActualizados = await http.Get<List<Vehiculo>>($"/Vehiculos/Busqueda/Actualizados?query={Busqueda}");
+            if (!respuestaActualizados.Error)
+            {
+                vehiculos = respuestaActualizados.Respuesta;
+            }
+        }
+        else if(!CheckboxChecked && !(String.IsNullOrEmpty(Busqueda)))
+        {
+            var respuesta = await http.Get<List<Vehiculo>>($"/Vehiculos/Busqueda?query={Busqueda}");
+                if (!respuesta.Error)
+                {
+                    vehiculos = respuesta.Respuesta;
+                    foreach (Vehiculo vehiculo in vehiculos)
+                    {
+                        Console.WriteLine(vehiculo);
+                    }
+                }
+        }
+        else if(String.IsNullOrEmpty(Busqueda))
+        {
+                var respuesta = await http.Get<List<Vehiculo>>($"/Vehiculos");
+                if (!respuesta.Error)
+                {
+                    vehiculos = respuesta.Respuesta;
+                }
+            }
     }
 }

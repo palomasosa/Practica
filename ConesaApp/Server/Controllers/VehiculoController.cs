@@ -21,20 +21,7 @@ namespace ConesaApp.Server.Controllers
         [HttpGet("/Vehiculos")]
         public async Task<ActionResult<List<Vehiculo>>> GetVehiculos()
         {
-            //var vehiculos = await _dbContext.Vehiculos
-            //                    .ToListAsync();
-
-            //if (vehiculos == null)
-            //{
-            //    return NotFound($"No hay vehículos para mostrar");
-
-            //}
-
-            //var cliente = await _dbContext.Clientes.ToListAsync();
-
-            //return vehiculos;
              return await _dbContext.Vehiculos.Include(x => x.Poliza).Include(x=>x.Poliza.Cobertura).Include(y => y.Cliente).ToListAsync();
-
         }
 
         [HttpGet("{id:int}")]
@@ -52,6 +39,68 @@ namespace ConesaApp.Server.Controllers
 
             return Ok(vehiculo);
         }
+
+        [HttpGet("/Vehiculos/Actualizados")]
+        public async Task<ActionResult<List<Vehiculo>>> GetVehiculosActualizados()
+        {
+            return await _dbContext.Vehiculos.Include(x => x.Poliza).Include(x => x.Poliza.Cobertura).Include(y => y.Cliente).Where(x=>x.Poliza.Actualizado == true).ToListAsync();
+        }
+        #region
+        [HttpGet("/Vehiculos/Busqueda")]
+        public async Task<ActionResult<List<Vehiculo>>> GetVehiculosBusqueda(string query)
+        {
+            bool IsInt(string s)
+            {
+                int temp;
+                return int.TryParse(s, out temp);
+            }
+
+            var vehiculos = _dbContext.Vehiculos.Include(v => v.Cliente).Include(v => v.Poliza).Include(v=>v.Poliza.Cobertura).ToList();
+
+            if (IsInt(query))
+            {
+                // Si el string se puede parsear a int, obtenga los vehículos que su año contenga este número.
+                vehiculos = vehiculos.Where(v => v.Año.HasValue && v.Año.Value.ToString().Contains(query)).ToList();
+            }
+            else
+            {
+                query = query.ToLower();
+                // Si no se pudo parsear a int, obtenga todos los vehículos que tengan una Patente, una Marca, un Poliza.TipoSeguro, un Cliente.Nombre o un Cliente.Telefono
+                vehiculos = vehiculos.Where(v => v.Patente.ToLower().Contains(query) || v.Marca.ToLower().Contains(query) || v.Poliza.Cobertura.Tipo.ToLower().Contains(query) || v.Cliente.Nombre.ToLower().Contains(query) || v.Cliente.Apellido.ToLower().Contains(query) || v.Cliente.Telefono.ToLower().Contains(query)).ToList();
+            }
+
+            return vehiculos;
+        }
+
+        [HttpGet("/Vehiculos/Busqueda/Actualizados")]
+        public async Task<ActionResult<List<Vehiculo>>> GetVehiculosBusquedaActualizados(string query)
+        {
+            bool IsInt(string s)
+            {
+                int temp;
+                return int.TryParse(s, out temp);
+            }
+
+            var vehiculos = _dbContext.Vehiculos.Include(v => v.Cliente).Include(v => v.Poliza).Include(v => v.Poliza.Cobertura).ToList();
+
+            if (IsInt(query))
+            {
+                // Si el string se puede parsear a int, obtenga los vehículos que su año contenga este número.
+                vehiculos = vehiculos.Where(v => v.Año.HasValue && v.Año.Value.ToString().Contains(query)).ToList();
+            }
+            else
+            {
+                query = query.ToLower();
+                // Si no se pudo parsear a int, obtenga todos los vehículos que tengan una Patente, una Marca, un Poliza.TipoSeguro, un Cliente.Nombre o un Cliente.Telefono
+                vehiculos = vehiculos.Where(v => v.Patente.ToLower().Contains(query) || v.Marca.ToLower().Contains(query) || v.Poliza.Cobertura.Tipo.ToLower().Contains(query) || v.Cliente.Nombre.ToLower().Contains(query) || v.Cliente.Apellido.ToLower().Contains(query) || v.Cliente.Telefono.ToLower().Contains(query)).ToList();
+            }
+
+            vehiculos = vehiculos.Where(x => x.Poliza.Actualizado == true).ToList();
+
+            return vehiculos;
+        }
+
+        #endregion
 
         [HttpPost]
         public async Task<ActionResult<int>> PostVehiculo(Vehiculo vehiculo)
