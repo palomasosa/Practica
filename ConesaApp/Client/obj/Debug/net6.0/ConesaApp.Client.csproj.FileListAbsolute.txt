@@ -915,12 +915,6 @@ C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\build-gz
 C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\build-gz\NgibdVVF.gz
 C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\build-gz\Lz6iEpJI.gz
 C:\Users\palos\source\repos\ConesaApp\ConesaApp\Client\obj\Debug\net6.0\scopedcss\Pages\Main\Clientes.razor.rz.scp.css
-C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.csproj.AssemblyReference.cache
-C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.AssemblyInfoInputs.cache
-C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.AssemblyInfo.cs
-C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.csproj.CoreCompileInputs.cache
-C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\bin\Debug\net6.0\wwwroot\_framework\blazor.boot.json
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\bin\Debug\net6.0\wwwroot\_framework\blazor.webassembly.js
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\bin\Debug\net6.0\wwwroot\_framework\Blazored.Modal.dll
@@ -1597,6 +1591,12 @@ C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\bin\Debug\net6.0\Con
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\bin\Debug\net6.0\ConesaApp.Shared.dll
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\bin\Debug\net6.0\ConesaApp.Database.pdb
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\bin\Debug\net6.0\ConesaApp.Shared.pdb
+C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.csproj.AssemblyReference.cache
+C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.AssemblyInfoInputs.cache
+C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.AssemblyInfo.cs
+C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.csproj.CoreCompileInputs.cache
+C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\ConesaApp.Client.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\build-gz\YI+KMh5X.gz
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\build-gz\ePlgxKKr.gz
 C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\obj\Debug\net6.0\build-gz\mthF7Kq4.gz

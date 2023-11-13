@@ -4,12 +4,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
 using System.Text.Json;
 using System.Text.Json.Serialization;
-using Blazored.Modal;
-
 
 var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
-
 
 // Add services to the container.
 
@@ -22,13 +18,13 @@ builder.Services.AddDbContext<DataBaseContext>(opciones => opciones.UseSqlServer
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-builder.Services.AddBlazoredModal(); // Agrega Blazored Modal
-
 //Swagger
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "ConesaApp", Version = "v1" });
 });
+
+var app = builder.Build();
 
 //Swagger
 app.UseSwagger();
@@ -49,7 +45,6 @@ else
     app.UseHsts();
 }
 
-
 app.UseHttpsRedirection();
 
 app.UseBlazorFrameworkFiles();
@@ -57,12 +52,9 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
-app.MapRazorPages();
-//app.UseBlazoredModal();
 
+app.MapRazorPages();
 app.MapControllers();
 app.MapFallbackToFile("index.html");
 
-
 app.Run();
-
