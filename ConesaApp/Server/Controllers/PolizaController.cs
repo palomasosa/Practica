@@ -66,6 +66,22 @@ namespace ConesaApp.Server.Controllers
             return Ok(vehiculo.Poliza);
         }
 
+        [HttpGet("/Vehiculos/{patente}/DetallesPoliza")]
+        public async Task<ActionResult<Poliza>> GetDetallesPolizaByPatente(string patente)
+        {
+            var vehiculo = await _dbContext.Vehiculos
+                .Include(v => v.Poliza)
+                    .ThenInclude(p => p.Cobertura)
+                .FirstOrDefaultAsync(v => v.Patente == patente);
+
+            if (vehiculo == null || vehiculo.Poliza == null)
+            {
+                return NotFound($"No existe información de póliza para el vehículo con patente= {patente}");
+            }
+
+            return Ok(vehiculo.Poliza);
+        }
+
         [HttpPost]
         public async Task<ActionResult<int>> PostPoliza(Poliza poliza)
         {

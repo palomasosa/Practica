@@ -40,20 +40,6 @@
                     <button @onclick="() => MostrarDetallesVehiculo(vehiculoElegido.Patente)">Ver Detalles</button>
                 </div>
 
-                var polizaDelVehiculo = await ObtenerDetallesPoliza(vehiculoElegido.VehiculoID);
-                if (polizaDelVehiculo != null)
-                {
-                    <div class="datosPoliza">
-                        <h3>Datos de la Póliza asociada al vehículo </h3>
-                        <p>Número de Póliza: @polizaDelVehiculo.NroPoliza</p>
-                        <p>Valor Asegurado: @polizaDelVehiculo.ValorAsegurado</p>
-                        <p>Inicio vigencia: @polizaDelVehiculo.InicioVigencia</p>
-                        <p>Fin vigencia: @polizaDelVehiculo.FinVigencia</p>
-                        <p>Tipo de cobertura: @polizaDelVehiculo.Cobertura</p>
-                        <p>Empresa: @polizaDelVehiculo.Empresa</p>
-                        <p>Valor Cuota: @polizaDelVehiculo.ValorCuota</p>
-                    </div>
-                }
                 if (polizaDelVehiculo != null)
                 {
                     <div class="datosPoliza">
@@ -81,6 +67,8 @@
 @code {
     [CascadingParameter] public Blazored.Modal.Services.ModalService Modal { get; set; }
     [Parameter] public Cliente ClienteSeleccionado { get; set; }
+    [Parameter] public Poliza polizaDelVehiculo { get; set; }
+
     Poliza poliza;
     List<Vehiculo> vehiculos;
     Cliente clienteSeleccionado;
@@ -109,19 +97,43 @@
     }
 
 
-    public async Task<Poliza> ObtenerDetallesPoliza(int vehiculoId)
+    public async Task<Poliza> ObtenerDetallesPoliza(string patente)
     {
+        var detallesVehiculo = await ObtenerDetallesVehiculoPorPatente(patente);
         //controller
-        var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{vehiculoId}/DetallesPoliza");
+        var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{patente}/DetallesPoliza");
         return respuestaPoliza.Respuesta;
     }
 
     void MostrarDetallesVehiculo(string patente)
     {
-        var vehiculoElegido = vehiculos.FirstOrDefault(v => v.Patente == patente);
-        if (vehiculoElegido != null)
+        if (vehiculoSeleccionado != null)
         {
-            var detallesVehiculo = ObtenerDetallesVehiculoPorPatente(patente);
+            var vehiculoElegido = vehiculos.FirstOrDefault(v => v.Patente == vehiculoSeleccionado.Patente);
+            if (vehiculoElegido != null)
+            {
+                ObtenerDetallesVehiculoYPoliza(vehiculoElegido.Patente);
+            }
+        }
+    }
+
+    async Task ObtenerDetallesVehiculoYPoliza(string patente)
+    {
+        var detallesVehiculo = await ObtenerDetallesVehiculoPorPatente(patente);
+        if (detallesVehiculo != null)
+        {
+            poliza = await ObtenerDetallesPoliza(int.Parse(detallesVehiculo.VehiculoID));
+            try
+            {
+                poliza = await ObtenerDetallesPoliza(int.Parse(detallesVehiculo.VehiculoID));
+            }
+            catch (FormatException ex)
+            {
+                // Manejar la excepción de formato si ocurre
+                Console.WriteLine($"Error de formato: {ex.Message}");
+            }
+
+            StateHasChanged();
         }
     }
 
