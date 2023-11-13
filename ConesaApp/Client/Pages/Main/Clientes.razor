@@ -25,6 +25,9 @@
                 <td>@v.Patente</td>
                 <td>@v.Poliza.Cobertura.Tipo</td>
                 <button class="btnMostrar" @onclick="MostrarDetalles">Mostrar</button>
+                <div class="formularioNuevoCliente" hidden="@(!mostrarFormulario)">
+                    <MostrarCliente />
+                </div>
                 @if (v.Poliza.FinVigencia < DateTime.Today)
                 {
                     <td>Vencido</td>
@@ -68,6 +71,8 @@
     [Parameter]
     public bool busquedaVencimiento { get; set; }
     Cliente clienteSeleccionado;
+    bool mostrarFormulario = false;
+
 
 
     List<Vehiculo> vehiculos = new List<Vehiculo>();
@@ -148,17 +153,21 @@
 
     private void MostrarDetalles()
     {
-        var parameters = new ModalParameters();
-        parameters.Add(nameof(MostrarCliente.ClienteSeleccionado), clienteSeleccionado);
+        mostrarFormulario = !mostrarFormulario;
 
-        var options = new ModalOptions()
-            {
-                DisableBackgroundCancel = false,
-                HideCloseButton = false,
-            };
-
-        ModalService.Show<MostrarCliente>("Detalles del Cliente", options)
-                    .WithParameters(parameters);
     }
-}
 
+    // private void MostrarDetalles()
+    // {
+    //     var parameters = new ModalParameters();
+    //     parameters.Add(nameof(MostrarCliente.ClienteSeleccionado), clienteSeleccionado);
+
+    //     var options = new ModalOptions()
+    //         {
+    //             DisableBackgroundCancel = false,
+    //             HideCloseButton = false,
+    //         };
+
+    //     ModalService.Show<MostrarCliente>("Detalles del Cliente", parameters)/* .WithParameters(parameters) */;
+    // }
+}

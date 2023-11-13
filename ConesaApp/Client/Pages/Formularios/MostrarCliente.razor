@@ -59,10 +59,7 @@
 
 </div>
 
-
 <button onclick="CerrarFormulario">Cerrar</button>
-
-
 
 @code {
     [CascadingParameter] public Blazored.Modal.Services.ModalService Modal { get; set; }
@@ -73,6 +70,7 @@
     List<Vehiculo> vehiculos;
     Cliente clienteSeleccionado;
     Vehiculo vehiculoSeleccionado;
+
 
     protected override async Task OnInitializedAsync()
     {
@@ -95,15 +93,15 @@
         var respuestaVehiculo = await http.Get<List<Vehiculo>>($"/Clientes/{clienteId}/Vehiculos");
         return respuestaVehiculo.Respuesta;
     }
+ 
 
-
-    public async Task<Poliza> ObtenerDetallesPoliza(string patente)
-    {
-        var detallesVehiculo = await ObtenerDetallesVehiculoPorPatente(patente);
-        //controller
-        var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{patente}/DetallesPoliza");
-        return respuestaPoliza.Respuesta;
-    }
+    // public async Task<Poliza> ObtenerDetallesPoliza(string patente)
+    // {
+    //     var detallesVehiculo = ObtenerDetallesVehiculoPorPatente(patente);
+    //     //controller
+    //     var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{patente}/DetallesPoliza");
+    //     return respuestaPoliza.Respuesta;
+    // }
 
     void MostrarDetallesVehiculo(string patente)
     {
@@ -117,24 +115,12 @@
         }
     }
 
-    async Task ObtenerDetallesVehiculoYPoliza(string patente)
+    public async Task<Poliza> ObtenerDetallesVehiculoYPoliza(string patente)
     {
-        var detallesVehiculo = await ObtenerDetallesVehiculoPorPatente(patente);
-        if (detallesVehiculo != null)
-        {
-            poliza = await ObtenerDetallesPoliza(int.Parse(detallesVehiculo.VehiculoID));
-            try
-            {
-                poliza = await ObtenerDetallesPoliza(int.Parse(detallesVehiculo.VehiculoID));
-            }
-            catch (FormatException ex)
-            {
-                // Manejar la excepción de formato si ocurre
-                Console.WriteLine($"Error de formato: {ex.Message}");
-            }
-
-            StateHasChanged();
-        }
+        var detallesVehiculo = ObtenerDetallesVehiculoPorPatente(patente);
+        //controller
+        var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{patente}/DetallesPoliza");
+        return respuestaPoliza.Respuesta;
     }
 
     public async Task<Vehiculo> ObtenerDetallesVehiculoPorPatente(string patente)
