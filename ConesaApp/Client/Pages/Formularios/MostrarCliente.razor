@@ -1,16 +1,12 @@
 ﻿@using ConesaApp.Database.Data.Entities;
-@using static System.Net.WebRequestMethods;
-@using ConesaApp.Client.Pages.Services;
-@using Blazored.Modal;
-@using System.Linq;
-@inject Blazored.Modal.Services.IModalService ModalService;
-@inherits LayoutComponentBase;
-@inject IHttpService http;
+@using Blazored.Modal
+@using ConesaApp.Client.Pages.Services
+@inject Blazored.Modal.Services.IModalService ModalService
+@inject IHttpService http
 
 <h3>MostrarCliente</h3>
 
 <div>
-
     @if (clienteSeleccionado != null)
     {
         <div class="datosPersonales">
@@ -23,45 +19,62 @@
             <p>Ciudad: @clienteSeleccionado.Mail </p>
         </div>
 
-
-        <InputSelect @bind-Value="vehiculoSeleccionado" class="form-control">
+        <label for="inputVehiculos">Seleccione un vehículo:</label>
+        <InputSelect id="inputVehiculos" @bind-Value="vehiculoSeleccionado" class="form-control">
             @foreach (var vehiculo in vehiculos)
             {
                 <option value="@vehiculo.Patente">@vehiculo.Patente</option>
             }
         </InputSelect>
-        <button @onclick="MostrarDetallesVehiculo">Ver Detalles</button>
-        @* @if (vehiculo != null)
-        {@foreach (var vehiculo in vehiculos)
+
+        @if (vehiculoSeleccionado != null)
+        {
+            var vehiculoElegido = vehiculos.FirstOrDefault(v => v.Patente == vehiculoSeleccionado.Patente);
+            if (vehiculoElegido != null)
             {
                 <div class="datosVehiculo">
-                    <h3>Datos del vehiculo </h3>
-                    <p>Patente: @vehiculo.Patente</p>
-                    <p>Modelo: @vehiculo.Marca</p>
-                    <p>Año: @vehiculo.Año</p>
-                    <button @onclick="() => MostrarDetallesVehiculo(vehiculo.Patente)">Ver Detalles</button>
+                    <h3>Datos del vehículo seleccionado </h3>
+                    <p>Patente: @vehiculoElegido.Patente</p>
+                    <p>Modelo: @vehiculoElegido.Marca</p>
+                    <p>Año: @vehiculoElegido.Año</p>
+                    <button @onclick="() => MostrarDetallesVehiculo(vehiculoElegido.Patente)">Ver Detalles</button>
                 </div>
-            }
-        } *@
 
-        @if (poliza != null)
-        {
-            <div class="datosPoliza">
-                <h3>Datos de la Poliza</h3>
-                <p>Número de Póliza: @poliza.NroPoliza</p>
-                <p>Valor Asegurado: @poliza.ValorAsegurado</p>
-                <p>Inicio vigencia: @poliza.InicioVigencia</p>
-                <p>Fin vigencia: @poliza.FinVigencia</p>
-                <p>Tipo de cobertura: @poliza.cobertura</p>
-                <p>Empresa: @poliza.Empresa</p>
-                <p>Valor Cuota: @poliza.ValorCuota</p>
-            </div>
+                var polizaDelVehiculo = await ObtenerDetallesPoliza(vehiculoElegido.VehiculoID);
+                if (polizaDelVehiculo != null)
+                {
+                    <div class="datosPoliza">
+                        <h3>Datos de la Póliza asociada al vehículo </h3>
+                        <p>Número de Póliza: @polizaDelVehiculo.NroPoliza</p>
+                        <p>Valor Asegurado: @polizaDelVehiculo.ValorAsegurado</p>
+                        <p>Inicio vigencia: @polizaDelVehiculo.InicioVigencia</p>
+                        <p>Fin vigencia: @polizaDelVehiculo.FinVigencia</p>
+                        <p>Tipo de cobertura: @polizaDelVehiculo.Cobertura</p>
+                        <p>Empresa: @polizaDelVehiculo.Empresa</p>
+                        <p>Valor Cuota: @polizaDelVehiculo.ValorCuota</p>
+                    </div>
+                }
+                if (polizaDelVehiculo != null)
+                {
+                    <div class="datosPoliza">
+                        <h3>Datos de la Póliza asociada al vehículo </h3>
+                        <p>Número de Póliza: @polizaDelVehiculo.NroPoliza</p>
+                        <p>Valor Asegurado: @polizaDelVehiculo.ValorAsegurado</p>
+                        <p>Inicio vigencia: @polizaDelVehiculo.InicioVigencia</p>
+                        <p>Fin vigencia: @polizaDelVehiculo.FinVigencia</p>
+                        <p>Tipo de cobertura: @polizaDelVehiculo.Cobertura</p>
+                        <p>Empresa: @polizaDelVehiculo.Empresa</p>
+                        <p>Valor Cuota: @polizaDelVehiculo.ValorCuota</p>
+                    </div>
+                }
+            }
         }
     }
-  
+
 </div>
 
-<button onclick="CerrarFormulario()">Cerrar</button>
+
+<button onclick="CerrarFormulario">Cerrar</button>
 
 
 
@@ -69,47 +82,30 @@
     [CascadingParameter] public Blazored.Modal.Services.ModalService Modal { get; set; }
     [Parameter] public Cliente ClienteSeleccionado { get; set; }
     Poliza poliza;
-    List<Vehiculo> vehiculo;
+    List<Vehiculo> vehiculos;
     Cliente clienteSeleccionado;
-    Vehiculo vehiculos;
-    string vehiculoSeleccionado;
+    Vehiculo vehiculoSeleccionado;
 
-    protected override void OnInitialized()
+    protected override async Task OnInitializedAsync()
     {
         if (ClienteSeleccionado != null)
         {
             clienteSeleccionado = ClienteSeleccionado;
+            vehiculos = await ObtenerDetallesVehiculo(clienteSeleccionado.ClienteID);
         }
     }
 
-    void MostrarDetalles(Cliente cliente)
-    {
-        clienteSeleccionado = cliente;
-        var vehiculo = ObtenerDetallesVehiculo(clienteSeleccionado.ClienteID);
-        poliza = null;
-    }
+    // void MostrarDetalles(Cliente cliente)
+    // {
+    //     clienteSeleccionado = cliente;
+    //     var vehiculo = ObtenerDetallesVehiculo(clienteSeleccionado.ClienteID);
+    //     poliza = null;
+    // }
 
-    public async Task<List<Vehiculo>> ObtenerDetallesVehiculo(int clienteId)
+    async Task<List<Vehiculo>> ObtenerDetallesVehiculo(int clienteId)
     {
-        //controller
         var respuestaVehiculo = await http.Get<List<Vehiculo>>($"/Clientes/{clienteId}/Vehiculos");
         return respuestaVehiculo.Respuesta;
-
-    }
-
-    public async Task MostrarDetallesVehiculo()
-    {
-        if (!string.IsNullOrEmpty(vehiculoSeleccionado))
-        {
-            var vehiculo = vehiculos.FirstOrDefault(v => v.Patente == vehiculoSeleccionado);
-            if (vehiculo != null)
-            {
-                var respuestaPoliza = await http.Get<Vehiculo>($"id:int");
-
-                // Por ejemplo, puedes actualizar la propiedad 'poliza' con detalles de la póliza asociada
-                poliza = await ObtenerDetallesPoliza(vehiculo.Id);
-            }
-        }
     }
 
 
@@ -118,6 +114,21 @@
         //controller
         var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{vehiculoId}/DetallesPoliza");
         return respuestaPoliza.Respuesta;
+    }
+
+    void MostrarDetallesVehiculo(string patente)
+    {
+        var vehiculoElegido = vehiculos.FirstOrDefault(v => v.Patente == patente);
+        if (vehiculoElegido != null)
+        {
+            var detallesVehiculo = ObtenerDetallesVehiculoPorPatente(patente);
+        }
+    }
+
+    public async Task<Vehiculo> ObtenerDetallesVehiculoPorPatente(string patente)
+    {
+        var respuestaVehiculo = await http.Get<Vehiculo>($"/Vehiculo/{patente}");
+        return respuestaVehiculo.Respuesta;
     }
 
     void CerrarFormulario()

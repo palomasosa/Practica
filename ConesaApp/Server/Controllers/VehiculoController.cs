@@ -20,7 +20,7 @@ namespace ConesaApp.Server.Controllers
         [HttpGet("/Vehiculos")]
         public async Task<ActionResult<List<Vehiculo>>> GetVehiculos()
         {
-             return await _dbContext.Vehiculos.Include(x => x.Poliza).Include(x=>x.Poliza.Cobertura).Include(y => y.Cliente).ToListAsync();
+            return await _dbContext.Vehiculos.Include(x => x.Poliza).Include(x => x.Poliza.Cobertura).Include(y => y.Cliente).ToListAsync();
         }
 
         [HttpGet("{id:int}")]
@@ -42,7 +42,7 @@ namespace ConesaApp.Server.Controllers
         [HttpGet("/Vehiculos/Actualizados")]
         public async Task<ActionResult<List<Vehiculo>>> GetVehiculosActualizados()
         {
-            return await _dbContext.Vehiculos.Include(x => x.Poliza).Include(x => x.Poliza.Cobertura).Include(y => y.Cliente).Where(x=>x.Poliza.Actualizado == true).ToListAsync();
+            return await _dbContext.Vehiculos.Include(x => x.Poliza).Include(x => x.Poliza.Cobertura).Include(y => y.Cliente).Where(x => x.Poliza.Actualizado == true).ToListAsync();
         }
         #region
         [HttpGet("/Vehiculos/Busqueda")]
@@ -54,7 +54,7 @@ namespace ConesaApp.Server.Controllers
                 return int.TryParse(s, out temp);
             }
 
-            var vehiculos = _dbContext.Vehiculos.Include(v => v.Cliente).Include(v => v.Poliza).Include(v=>v.Poliza.Cobertura).ToList();
+            var vehiculos = _dbContext.Vehiculos.Include(v => v.Cliente).Include(v => v.Poliza).Include(v => v.Poliza.Cobertura).ToList();
 
             if (IsInt(query))
             {
@@ -136,13 +136,29 @@ namespace ConesaApp.Server.Controllers
 
             var vehiculos = _dbContext.Vehiculos
                                     .Include(v => v.Poliza)
-                                    .Include(v=>v.Cliente)
-                                    .Include(v=>v.Poliza.Cobertura)
+                                    .Include(v => v.Cliente)
+                                    .Include(v => v.Poliza.Cobertura)
                                     .Where(v => v.Poliza.FinVigencia >= fechaInicioDateTime &&
                                                 v.Poliza.FinVigencia <= fechaFinDateTime)
                                     .ToList();
 
             return vehiculos;
+        }
+
+        [HttpGet("Vehiculo/{patente}")]
+        public async Task<ActionResult<Vehiculo>> GetVehiculoPatente(string patente)
+        {
+            var vehiculo = await _dbContext.Vehiculos
+                .Include(v => v.Cliente)
+                .Include(v => v.Poliza)
+                .FirstOrDefaultAsync(x => x.Patente == patente);
+
+            if (vehiculo == null)
+            {
+                return NotFound($"No existe un vehiculo con patente {patente}");
+            }
+
+            return Ok(vehiculo);
         }
 
 
