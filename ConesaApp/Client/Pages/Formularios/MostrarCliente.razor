@@ -1,10 +1,11 @@
 ﻿@using ConesaApp.Database.Data.Entities;
 @using static System.Net.WebRequestMethods;
 @using ConesaApp.Client.Pages.Services;
-@using Blazored.Modal
-@inject Blazored.Modal.Services.IModalService ModalService
-@inherits LayoutComponentBase
-@inject IHttpService http; 
+@using Blazored.Modal;
+@using System.Linq;
+@inject Blazored.Modal.Services.IModalService ModalService;
+@inherits LayoutComponentBase;
+@inject IHttpService http;
 
 <h3>MostrarCliente</h3>
 
@@ -22,6 +23,14 @@
             <p>Ciudad: @clienteSeleccionado.Mail </p>
         </div>
 
+
+        <InputSelect @bind-Value="vehiculoSeleccionado" class="form-control">
+            @foreach (var vehiculo in vehiculos)
+            {
+                <option value="@vehiculo.Patente">@vehiculo.Patente</option>
+            }
+        </InputSelect>
+        <button @onclick="MostrarDetallesVehiculo">Ver Detalles</button>
         @* @if (vehiculo != null)
         {@foreach (var vehiculo in vehiculos)
             {
@@ -49,6 +58,7 @@
             </div>
         }
     }
+  
 </div>
 
 <button onclick="CerrarFormulario()">Cerrar</button>
@@ -62,6 +72,7 @@
     List<Vehiculo> vehiculo;
     Cliente clienteSeleccionado;
     Vehiculo vehiculos;
+    string vehiculoSeleccionado;
 
     protected override void OnInitialized()
     {
@@ -86,18 +97,27 @@
 
     }
 
+    public async Task MostrarDetallesVehiculo()
+    {
+        if (!string.IsNullOrEmpty(vehiculoSeleccionado))
+        {
+            var vehiculo = vehiculos.FirstOrDefault(v => v.Patente == vehiculoSeleccionado);
+            if (vehiculo != null)
+            {
+                var respuestaPoliza = await http.Get<Vehiculo>($"id:int");
+
+                // Por ejemplo, puedes actualizar la propiedad 'poliza' con detalles de la póliza asociada
+                poliza = await ObtenerDetallesPoliza(vehiculo.Id);
+            }
+        }
+    }
+
+
     public async Task<Poliza> ObtenerDetallesPoliza(int vehiculoId)
     {
         //controller
         var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{vehiculoId}/DetallesPoliza");
         return respuestaPoliza.Respuesta;
-    }
-
-    public async Task<Vehiculo> MostrarDetallesVehiculo(int vehiculoId)
-    {
-        //controller
-        var respuestaVehi = await http.Get<Vehiculo>($"id:int");
-        return respuestaVehi.Respuesta;
     }
 
     void CerrarFormulario()

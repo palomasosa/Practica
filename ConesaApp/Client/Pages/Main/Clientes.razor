@@ -146,7 +146,7 @@
 
     }
 
-    private async Task MostrarDetalles()
+    private void MostrarDetalles()
     {
         var parameters = new ModalParameters();
         parameters.Add(nameof(MostrarCliente.ClienteSeleccionado), clienteSeleccionado);
@@ -157,8 +157,8 @@
                 HideCloseButton = false,
             };
 
-        var modal = await ModalService.Show<MostrarCliente>("Detalles del Cliente", options);
-        modal.WithParameters(parameters);
+        ModalService.Show<MostrarCliente>("Detalles del Cliente", options)
+                    .WithParameters(parameters);
     }
 }
 
