@@ -1,0 +1,79 @@
+﻿@page "/Inicio/Clientes/Nuevo"
+@using ConesaApp.Client.Pages.Formularios
+@using ConesaApp.Client.Pages.Services;
+@using ConesaApp.Database.Data.Entities;
+@inject IHttpService http
+@inject NavigationManager navigationManger
+
+<h3>Nuevo Cliente</h3>
+
+<div class="card-Nuevo" >
+
+    <div class="nuevoCliente">
+        <h1>Datos Personales</h1>
+        <FormCliente cliente="cliente" onValidSubmit="GrabarCliente" onCancel="Cancelar" />
+    </div>
+
+        <h1>Datos del vehiculo</h1>
+    <div class="nuevoVehiculo">
+        <FormVehiculo vehiculo="vehiculo" onValidSubmit="GrabarVehiculo" onCancel="Cancelar" />
+    </div>
+
+    <div class="nuevoPoliza">
+
+        <h1>Datos de la poliza</h1>
+        <FormPoliza poliza="poliza" onValidSubmit="GrabarPoliza" onCancel="Cancelar" />
+    </div>
+
+    <button onclick="CerrarFormulario">Cerrar</button>
+      
+</div>
+
+
+@code {
+    private Cliente cliente = new Cliente();
+    private Poliza poliza = new Poliza();
+    private Vehiculo vehiculo = new Vehiculo();
+    bool cFormulario = true;
+
+    private async void GrabarCliente()
+    {
+        var httpRespuesta = await http.Post<Cliente>("api/Cliente", cliente);
+        if (httpRespuesta.Error)
+        {
+            var body = httpRespuesta.HttpResponseMessage; 
+        }
+        navigationManger.NavigateTo("/Inicio/Clientes");
+    }
+
+    private void Cancelar()
+    {
+        navigationManger.NavigateTo("/Inicio/Clientes");
+    }
+
+
+    private async void GrabarPoliza()
+    {
+        var httpRespuesta = await http.Post<Poliza>("api/Poliza", poliza);
+        if (httpRespuesta.Error)
+        {
+            var body = httpRespuesta.HttpResponseMessage;
+        }
+        navigationManger.NavigateTo("/Inicio/Clientes");
+    }
+
+    private async void GrabarVehiculo()
+    {
+        var httpRespuesta = await http.Post<Vehiculo>("api/Vehiculo", vehiculo);
+        if (httpRespuesta.Error)
+        {
+            var body = httpRespuesta.HttpResponseMessage;
+        }
+        navigationManger.NavigateTo("/Inicio/Clientes");
+    }
+
+    void CerrarFormulario()
+    {
+        cFormulario = false;
+    }
+}

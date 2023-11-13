@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
 using ConesaApp.Database.Data.Entities;
 using ConesaApp.Database.Data;
 
@@ -96,6 +95,24 @@ namespace ConesaApp.Server.Controllers
             }
 
             vehiculos = vehiculos.Where(x => x.Poliza.Actualizado == true).ToList();
+
+            return vehiculos;
+        }
+
+        [HttpGet("/Clientes/{clienteId}/Vehiculos")]
+        public async Task<List<Vehiculo>> GetVehiculosByCliente(int clienteId)
+        {
+            var vehiculos = await _dbContext.Vehiculos
+                .Where(v => v.ClienteID == clienteId)
+                .Include(x => x.Poliza)
+                    .ThenInclude(x => x.Cobertura)
+                .Include(y => y.Cliente)
+                .ToListAsync();
+
+            if (vehiculos == null || vehiculos.Count == 0)
+            {
+                return null;
+            }
 
             return vehiculos;
         }

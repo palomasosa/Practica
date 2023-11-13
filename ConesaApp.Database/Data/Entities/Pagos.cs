@@ -7,7 +7,9 @@ namespace ConesaApp.Database.Data.Entities
     public class Pagos
     {
         [Key] public int PagoID { get; set; }
+        [Required(ErrorMessage = "Fecha es obligatorio")]
         public DateTime Fecha { get; set; }
+        [Required(ErrorMessage = " Monto es obligatorio")]
         public decimal Monto { get; set; }
         //CLAVES FORÁNEAS
         public int PolizaID { get; set; }

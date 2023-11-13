@@ -219,4 +219,6 @@ input:checked + .slider:before {
         padding-left: 2rem !important;
         padding-right: 1.5rem !important;
     }
+
 }
+

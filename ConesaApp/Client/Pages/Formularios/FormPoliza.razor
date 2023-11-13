@@ -1,0 +1,102 @@
+﻿@using ConesaApp.Database.Data;
+@using ConesaApp.Database.Data.Entities;
+@using Microsoft.EntityFrameworkCore;
+@using ConesaApp.Client.Pages.Services;
+@inject IHttpService http;  
+
+
+<EditForm Model="poliza" OnValidSubmit="onValidSubmit">
+
+    <div class="datosPoliza">
+        <label>Nro Poliza</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="poliza.NroPoliza"></InputNumber>
+        </div>
+
+        <label>Vigencia Poliza</label>
+        <div>
+            <InputDate class="form-control" @bind-Value="poliza.InicioVigencia" />
+            @*CAMBIAR INICIO VIGENCIA, POR VIGENCIA*@
+        </div>
+
+        <label>Perido</label>
+        <div>
+            <InputDate class="form-control" @bind-Value="poliza.FinVigencia" />
+            @*CAMBIAR FIN VIGENCIA POR PERIODO*@
+        </div>
+
+        <label>Valor Cuota</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="poliza.ValorCuota" />
+        </div>
+
+        <label>Valor Asegurado</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="poliza.ValorAsegurado" />
+        </div>
+
+        <label>Empresa</label>
+        <div>
+            <!--  foreach para mostrar las opciones de la lista de tipos de empresa -->
+            <InputSelect class="form-control" @bind-Value="poliza.Cobertura">
+                @foreach (Empresa nombreEmpresas in nombreEmpresa)
+                {
+                    <option value="@nombreEmpresas.EmpresaID">@nombreEmpresas.Nombre</option>
+                }
+            </InputSelect>
+        </div>
+
+        <label>Tipo cobertura</label>
+        <div>
+            <!--  foreach para mostrar las opciones de la lista de tipos de cobertura -->
+            <InputSelect class="form-control" @bind-Value="poliza.Cobertura">
+                @foreach (Cobertura tipoCobertura in tiposDeCobertura)
+                {
+                    <option value="@tipoCobertura.CoberturaID">@tipoCobertura.Tipo</option>
+                }
+            </InputSelect>
+        </div> 
+
+
+         <button class="btn btn-primary" type="submit">Aceptar</button>
+        <button class="btn btn-secondary" @onclick="onCancel">Cancelar</button>
+
+    </div>
+
+</EditForm>
+@code {
+    [Parameter] public Poliza poliza { get; set; }
+    [Parameter] public Cobertura cobertura { get; set; }
+    List<Cobertura> tiposDeCobertura;
+    List<Empresa> nombreEmpresa;
+
+
+    [Parameter] public EventCallback onValidSubmit { get; set; }
+    [Parameter] public EventCallback onCancel { get; set; }
+
+
+    private async Task traerPolizas()
+    {
+        var respuesta = await http.Get<List<Cobertura>>("/Coberturas"); 
+        if (!respuesta.Error)
+        {
+            tiposDeCobertura = respuesta.Respuesta; 
+        }
+    }
+
+    private async Task traerEmpresas()
+    {
+        var respuesta = await http.Get<List<Empresa>>("/Empresas");
+        if (!respuesta.Error)
+        {
+            nombreEmpresa = respuesta.Respuesta;
+        }
+    }
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync(); 
+        await traerPolizas();
+        await traerEmpresas();
+    }
+}
+

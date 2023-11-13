@@ -1,0 +1,37 @@
+﻿@using ConesaApp.Database.Data.Entities;
+<EditForm Model="vehiculo" OnValidSubmit="onValidSubmit">
+
+    <DataAnnotationsValidator />
+
+
+    <div class="datosVehiculo">
+        <label> Patente </label>
+        <div>
+            <InputText class="form-control" @bind-Value="vehiculo.Patente" />
+            <ValidationMessage For="@(() => vehiculo.Patente)" />
+        </div>
+
+
+        <label>Año</label>
+        <div>
+            <InputNumber class="form-control" @bind-Value="vehiculo.Año" />
+            <ValidationMessage For="@(() => vehiculo.Año)" />
+        </div>
+
+
+        <label>Modelo</label>
+        <div>
+            <InputText class="form-control" @bind-Value="vehiculo.Marca" />
+            <ValidationMessage For="@(() => vehiculo.Marca)" />
+        </div>
+
+    </div>
+    <button class="btn btn-primary" type="submit">Aceptar</button>
+    <button class="btn btn-secondary" @onclick="onCancel">Cancelar</button>
+</EditForm>
+
+@code {
+    [Parameter] public Vehiculo vehiculo { get; set; }
+    [Parameter] public EventCallback onValidSubmit { get; set; }
+    [Parameter] public EventCallback onCancel { get; set; }
+}

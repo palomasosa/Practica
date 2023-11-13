@@ -1,0 +1,107 @@
+﻿@using ConesaApp.Database.Data.Entities;
+@using static System.Net.WebRequestMethods;
+@using ConesaApp.Client.Pages.Services;
+@using Blazored.Modal
+@inject Blazored.Modal.Services.IModalService ModalService
+@inherits LayoutComponentBase
+@inject IHttpService http; 
+
+<h3>MostrarCliente</h3>
+
+<div>
+
+    @if (clienteSeleccionado != null)
+    {
+        <div class="datosPersonales">
+            <h3>Datos Personales</h3>
+
+            <p>Nombre: @clienteSeleccionado.Nombre Apellido: @clienteSeleccionado.Apellido</p>
+            <p>Ciudad: @clienteSeleccionado.Ciudad </p>
+            <p>Ciudad: @clienteSeleccionado.Direccion </p>
+            <p>Ciudad: @clienteSeleccionado.Telefono </p>
+            <p>Ciudad: @clienteSeleccionado.Mail </p>
+        </div>
+
+        @* @if (vehiculo != null)
+        {@foreach (var vehiculo in vehiculos)
+            {
+                <div class="datosVehiculo">
+                    <h3>Datos del vehiculo </h3>
+                    <p>Patente: @vehiculo.Patente</p>
+                    <p>Modelo: @vehiculo.Marca</p>
+                    <p>Año: @vehiculo.Año</p>
+                    <button @onclick="() => MostrarDetallesVehiculo(vehiculo.Patente)">Ver Detalles</button>
+                </div>
+            }
+        } *@
+
+        @if (poliza != null)
+        {
+            <div class="datosPoliza">
+                <h3>Datos de la Poliza</h3>
+                <p>Número de Póliza: @poliza.NroPoliza</p>
+                <p>Valor Asegurado: @poliza.ValorAsegurado</p>
+                <p>Inicio vigencia: @poliza.InicioVigencia</p>
+                <p>Fin vigencia: @poliza.FinVigencia</p>
+                <p>Tipo de cobertura: @poliza.cobertura</p>
+                <p>Empresa: @poliza.Empresa</p>
+                <p>Valor Cuota: @poliza.ValorCuota</p>
+            </div>
+        }
+    }
+</div>
+
+<button onclick="CerrarFormulario()">Cerrar</button>
+
+
+
+@code {
+    [CascadingParameter] public Blazored.Modal.Services.ModalService Modal { get; set; }
+    [Parameter] public Cliente ClienteSeleccionado { get; set; }
+    Poliza poliza;
+    List<Vehiculo> vehiculo;
+    Cliente clienteSeleccionado;
+    Vehiculo vehiculos;
+
+    protected override void OnInitialized()
+    {
+        if (ClienteSeleccionado != null)
+        {
+            clienteSeleccionado = ClienteSeleccionado;
+        }
+    }
+
+    void MostrarDetalles(Cliente cliente)
+    {
+        clienteSeleccionado = cliente;
+        var vehiculo = ObtenerDetallesVehiculo(clienteSeleccionado.ClienteID);
+        poliza = null;
+    }
+
+    public async Task<List<Vehiculo>> ObtenerDetallesVehiculo(int clienteId)
+    {
+        //controller
+        var respuestaVehiculo = await http.Get<List<Vehiculo>>($"/Clientes/{clienteId}/Vehiculos");
+        return respuestaVehiculo.Respuesta;
+
+    }
+
+    public async Task<Poliza> ObtenerDetallesPoliza(int vehiculoId)
+    {
+        //controller
+        var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{vehiculoId}/DetallesPoliza");
+        return respuestaPoliza.Respuesta;
+    }
+
+    public async Task<Vehiculo> MostrarDetallesVehiculo(int vehiculoId)
+    {
+        //controller
+        var respuestaVehi = await http.Get<Vehiculo>($"id:int");
+        return respuestaVehi.Respuesta;
+    }
+
+    void CerrarFormulario()
+    {
+        Modal.Close();
+    }
+} 
