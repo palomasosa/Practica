@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8UwT/dif6luMSUPgrewVzIju9QRaC9ANyU+HIgsTN+UXmct9cGgNifOwfbznRhF4KFo2QN5B5p0giJ2q9Ky8wA==",
+  "dgSpecHash": "eJDvsQ+KeuQUoWTiiX7vqYPfC1jkYJ54q/I21awKtn59tAO57kBBrHLu50ibKRQkN2NXmvkZBVeN6UDzSKVjGg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cande\\Source\\Repos\\PracticaFinal1\\ConesaApp.Database\\ConesaApp.Database.csproj",
+  "projectFilePath": "C:\\Users\\cande\\Source\\Repos\\Practica1\\ConesaApp.Database\\ConesaApp.Database.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cande\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\cande\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",

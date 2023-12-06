@@ -11,22 +11,21 @@
 
     <div class="nuevoCliente">
         <h1>Datos Personales</h1>
-        <FormCliente cliente="cliente" onValidSubmit="GrabarCliente" onCancel="Cancelar" />
+        <FormCliente cliente="cliente" onValidSubmit="GrabarCliente"  />
     </div>
 
         <h1>Datos del vehiculo</h1>
     <div class="nuevoVehiculo">
-        <FormVehiculo vehiculo="vehiculo" onValidSubmit="GrabarVehiculo" onCancel="Cancelar" />
+        <FormVehiculo vehiculo="vehiculo" onValidSubmit="GrabarVehiculo" />
     </div>
 
     <div class="nuevoPoliza">
-
         <h1>Datos de la poliza</h1>
-        <FormPoliza poliza="poliza" onValidSubmit="GrabarPoliza" onCancel="Cancelar" />
+        <FormPoliza poliza="poliza" onValidSubmit="GrabarPoliza" />
     </div>
 
     <button onclick="CerrarFormulario">Cerrar</button>
-      
+   
 </div>
 
 
@@ -43,12 +42,6 @@
         {
             var body = httpRespuesta.HttpResponseMessage; 
         }
-        navigationManger.NavigateTo("/Inicio/Clientes");
-    }
-
-    private void Cancelar()
-    {
-        navigationManger.NavigateTo("/Inicio/Clientes");
     }
 
 
@@ -59,7 +52,6 @@
         {
             var body = httpRespuesta.HttpResponseMessage;
         }
-        navigationManger.NavigateTo("/Inicio/Clientes");
     }
 
     private async void GrabarVehiculo()
@@ -69,11 +61,5 @@
         {
             var body = httpRespuesta.HttpResponseMessage;
         }
-        navigationManger.NavigateTo("/Inicio/Clientes");
-    }
-
-    void CerrarFormulario()
-    {
-        cFormulario = false;
     }
 }

@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "NgMUG11ubTrUaXxyEULZhqjv8Ni8yMj62Q0wTdyr13KyPEdVCljYyTxldsPmCzXUlO2LlPaA4QGRKILWUHZLxg==",
+  "dgSpecHash": "Iumk2DIfbKG1c9Sa7wU2XXcPB0s38Etx23W8Fk/LD8DW5or3e4ENR5boTzwHANlwLA/yu8SSfrxS3qaSUCQx6w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\cande\\Source\\Repos\\PracticaFinal1\\ConesaApp\\Server\\ConesaApp.Server.csproj",
+  "projectFilePath": "C:\\Users\\cande\\Source\\Repos\\Practica1\\ConesaApp\\Server\\ConesaApp.Server.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\cande\\.nuget\\packages\\blazored.modal\\3.1.1\\blazored.modal.3.1.1.nupkg.sha512",
     "C:\\Users\\cande\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",

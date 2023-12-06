@@ -1,7 +1,6 @@
 ﻿@using ConesaApp.Database.Data.Entities;
 @using Blazored.Modal
 @using ConesaApp.Client.Pages.Services
-@inject Blazored.Modal.Services.IModalService ModalService
 @inject IHttpService http
 
 <h3>MostrarCliente</h3>
@@ -62,7 +61,6 @@
 <button onclick="CerrarFormulario">Cerrar</button>
 
 @code {
-    [CascadingParameter] public Blazored.Modal.Services.ModalService Modal { get; set; }
     [Parameter] public Cliente ClienteSeleccionado { get; set; }
     [Parameter] public Poliza polizaDelVehiculo { get; set; }
 
@@ -110,7 +108,7 @@
             var vehiculoElegido = vehiculos.FirstOrDefault(v => v.Patente == vehiculoSeleccionado.Patente);
             if (vehiculoElegido != null)
             {
-                ObtenerDetallesVehiculoYPoliza(vehiculoElegido.Patente);
+                 ObtenerDetallesVehiculoYPoliza(vehiculoElegido.Patente);
             }
         }
     }
@@ -120,17 +118,12 @@
         var detallesVehiculo = ObtenerDetallesVehiculoPorPatente(patente);
         //controller
         var respuestaPoliza = await http.Get<Poliza>($"/Vehiculos/{patente}/DetallesPoliza");
-        return respuestaPoliza.Respuesta;
+        return respuestaPoliza.Respuesta; 
     }
 
     public async Task<Vehiculo> ObtenerDetallesVehiculoPorPatente(string patente)
     {
         var respuestaVehiculo = await http.Get<Vehiculo>($"/Vehiculo/{patente}");
         return respuestaVehiculo.Respuesta;
-    }
-
-    void CerrarFormulario()
-    {
-        Modal.Close();
     }
 } 

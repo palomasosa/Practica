@@ -40,9 +40,9 @@
                         </svg>
                     </button>
 
-                    <div class="formularioNuevoCliente" hidden="@(!mostrarFormulario)">  
-                        <ClienteNuevo />
-                    </div>
+                    <div class="formularioNuevoCliente" hidden="@(!mostrarFormulario)">
+                     <ClienteNuevo/>
+                     </div>
 
                     <Buscador OnBuscar="ActualizarBusqueda" />
                     @*      <div class="buscador">
@@ -139,14 +139,4 @@
         mostrarFormulario = !mostrarFormulario; 
 
     }
-
-
-    // void MostrarFormulario()
-    // {
-    //     mostrarFormulario = true;
-    // }
-
-    // void CerrarFormulario()
-    // {
-    //     mostrarFormulario = false;
 }

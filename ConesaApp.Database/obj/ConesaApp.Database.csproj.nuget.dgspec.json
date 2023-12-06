@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\cande\\Source\\Repos\\PracticaFinal1\\ConesaApp.Database\\ConesaApp.Database.csproj": {}
+    "C:\\Users\\cande\\Source\\Repos\\Practica1\\ConesaApp.Database\\ConesaApp.Database.csproj": {}
   },
   "projects": {
-    "C:\\Users\\cande\\Source\\Repos\\PracticaFinal1\\ConesaApp.Database\\ConesaApp.Database.csproj": {
+    "C:\\Users\\cande\\Source\\Repos\\Practica1\\ConesaApp.Database\\ConesaApp.Database.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\cande\\Source\\Repos\\PracticaFinal1\\ConesaApp.Database\\ConesaApp.Database.csproj",
+        "projectUniqueName": "C:\\Users\\cande\\Source\\Repos\\Practica1\\ConesaApp.Database\\ConesaApp.Database.csproj",
         "projectName": "ConesaApp.Database",
-        "projectPath": "C:\\Users\\cande\\Source\\Repos\\PracticaFinal1\\ConesaApp.Database\\ConesaApp.Database.csproj",
+        "projectPath": "C:\\Users\\cande\\Source\\Repos\\Practica1\\ConesaApp.Database\\ConesaApp.Database.csproj",
         "packagesPath": "C:\\Users\\cande\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\cande\\Source\\Repos\\PracticaFinal1\\ConesaApp.Database\\obj\\",
+        "outputPath": "C:\\Users\\cande\\Source\\Repos\\Practica1\\ConesaApp.Database\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

@@ -9,73 +9,73 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = browser
 build_property.RootNamespace = ConesaApp.Client
 build_property.RootNamespace = ConesaApp.Client
-build_property.ProjectDir = C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client\
+build_property.ProjectDir = C:\Users\cande\Source\Repos\Practica1\ConesaApp\Client\
 build_property.RazorLangVersion = 6.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\cande\Source\Repos\PracticaFinal1\ConesaApp\Client
+build_property.MSBuildProjectDirectory = C:\Users\cande\Source\Repos\Practica1\ConesaApp\Client
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/App.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/App.razor]
 build_metadata.AdditionalFiles.TargetPath = QXBwLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Counter.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Counter.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ291bnRlci5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/FetchData.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/FetchData.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRmV0Y2hEYXRhLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Formularios/FormCliente.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Formularios/FormCliente.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcRm9ybUNsaWVudGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Formularios/FormPoliza.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Formularios/FormPoliza.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcRm9ybVBvbGl6YS5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Formularios/FormVehiculo.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Formularios/FormVehiculo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcRm9ybVZlaGljdWxvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Formularios/MostrarCliente.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Formularios/MostrarCliente.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcTW9zdHJhckNsaWVudGUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Index.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Index.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXgucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Main/Pagos.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Main/Pagos.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpblxQYWdvcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Shared/SurveyPrompt.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Shared/SurveyPrompt.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXFN1cnZleVByb21wdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/_Imports.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/_Imports.razor]
 build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Formularios/ClienteNuevo.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Formularios/ClienteNuevo.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRm9ybXVsYXJpb3NcQ2xpZW50ZU51ZXZvLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-n4oh5ceukg
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Pages/Main/Clientes.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Pages/Main/Clientes.razor]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcTWFpblxDbGllbnRlcy5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = b-0ophteuo75
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Shared/Buscador.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Shared/Buscador.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXEJ1c2NhZG9yLnJhem9y
 build_metadata.AdditionalFiles.CssScope = b-4jihwlmx48
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Shared/MainLayout.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Shared/MainLayout.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE1haW5MYXlvdXQucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-6i9p38o976
 
-[C:/Users/cande/Source/Repos/PracticaFinal1/ConesaApp/Client/Shared/NavMenu.razor]
+[C:/Users/cande/Source/Repos/Practica1/ConesaApp/Client/Shared/NavMenu.razor]
 build_metadata.AdditionalFiles.TargetPath = U2hhcmVkXE5hdk1lbnUucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = b-nph7bkdc91
